@@ -1,4 +1,4 @@
 package kr.co.dbcafe.controller;
 
-public class OrderForYear {
+public class OrderForYearController {
 }

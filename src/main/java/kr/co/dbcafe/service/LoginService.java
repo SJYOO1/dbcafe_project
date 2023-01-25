@@ -1,4 +1,4 @@
-package kr.co.dbcafe.controller;
+package kr.co.dbcafe.service;
 
-public class LoginController {
+public interface LoginService {
 }

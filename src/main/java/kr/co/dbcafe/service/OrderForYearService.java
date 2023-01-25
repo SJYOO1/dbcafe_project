@@ -1,4 +1,4 @@
 package kr.co.dbcafe.service;
 
-public class OrderForYearController {
+public interface OrderForYearService {
 }

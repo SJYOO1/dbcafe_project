@@ -1,4 +1,4 @@
 package kr.co.dbcafe.controller;
 
-public class OrderForTime {
+public class OrderForTimeController {
 }

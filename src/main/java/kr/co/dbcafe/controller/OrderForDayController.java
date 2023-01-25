@@ -1,5 +1,5 @@
 package kr.co.dbcafe.controller;
 
-public class OrderForDay {
+public class OrderForDayController {
 	
 }

@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StoreVO {
-    private String stNo;
-    private String stNm;
-    private String stAddr;
+public class GoodsVO {
+	private String gdNo;
+	private String gdNm;
+	private int price;
+	private String catNo;
+	private char gdYn;
 }

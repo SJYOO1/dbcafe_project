@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StoreVO {
-    private String stNo;
-    private String stNm;
-    private String stAddr;
+public class CategoryVO {
+	private String catNo;
+	private String catNm;
+	private char catYn;
 }

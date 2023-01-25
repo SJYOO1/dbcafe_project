@@ -1,4 +1,4 @@
-package kr.co.dbcafe.controller;
+package kr.co.dbcafe.service;
 
-public class OrderForMonthController {
+public interface OrderForMonthService {
 }
