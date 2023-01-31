@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.dbcafe.dao.OrderDAO;
+import kr.co.dbcafe.vo.PeriodCompResultDTO;
 import kr.co.dbcafe.vo.PeriodResultDTO;
 
 @Service("orderService")
@@ -33,6 +34,17 @@ public class OrderServiceImpl implements OrderService {
 		List<PeriodResultDTO> dtos = new ArrayList<>();
 		try {
 			dtos = orderDAO.selectByUnitDate(map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dtos;
+	}
+
+	@Override
+	public List<PeriodCompResultDTO> selectCompByStore(Map<String, Object> map) {
+		List<PeriodCompResultDTO> dtos = new ArrayList<>();
+		try {
+			dtos = orderDAO.selectCompByStore(map);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
