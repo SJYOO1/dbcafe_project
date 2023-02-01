@@ -6,12 +6,17 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import kr.co.dbcafe.vo.CategoryDTO;
 import kr.co.dbcafe.vo.CategoryVO;
 
 @Mapper
 public interface CategoryDAO {
-	Map<String, String> categorySelect(Map<String, Object> map) throws SQLException;
-	Map<String, String> menuSelect(Map<String, Object> map) throws SQLException;
-	List<CategoryVO> selectAll() throws SQLException;
-	Map<String, Object> selectOrd(Map<String, Object> map) throws SQLException;
+	// 1. 카테고리별 매출 비중
+	List<CategoryDTO> categorySum(Map<String, Object> map) throws SQLException;
+	// 2. 카테고리별 판매량 비중
+	List<CategoryDTO> categoryCount(Map<String, Object> map) throws SQLException;
+	
+//	Map<String, String> menuSelect(Map<String, Object> map) throws SQLException;
+//	List<CategoryVO> selectAll() throws SQLException;
+//	Map<String, Object> selectOrd(Map<String, Object> map) throws SQLException;
 }
