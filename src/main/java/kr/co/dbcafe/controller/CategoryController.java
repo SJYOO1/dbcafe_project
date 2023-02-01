@@ -46,6 +46,7 @@ public class CategoryController {
 		map.put("startDay", s);
 		map.put("EndDay", e);
 		List<CategoryDTO> list = categoryService.categorySum(map);
+		
 		model.addAttribute("list", list);
 		return "sales";
 	}
