@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.dbcafe.dao.SalesGoalDAO">
-	<select id="selectMonthSalesGoal"
+	<select id="selectMonthSalesGoal" parameterType="map"
 		resultType="MonthGoalResultDTO">
 		SELECT
 		sum,
@@ -14,20 +14,53 @@
 		SELECT
 		sum(d.TOTPRICE) sum
 		FROM
-		ORD o ,
+		ORD o,
 		DETAIL d
 		WHERE
 		o.ORDNO = d.ORDNO
-		AND TO_CHAR(o.ORDDT, 'YYYY-MM') = '2020-03'
-		AND o.STNO
-		= '1001'),
-		(
+		AND TO_CHAR(o.ORDDT, 'YYYY-MM') =
+		#{currentYm}
+		AND o.STNO = #{accountStNo}
+		),(
 		SELECT
-		m.MONTHGOALSALES goalMonth
+		m.MONTHGOALSALES
+		goalMonth
 		FROM
 		MGOAL m
 		WHERE
-		m.GOALYM = '2020-03'
-		AND m.STNO = '1001')
+		m.GOALYM = #{currentYm}
+		AND m.STNO =
+		#{accountStNo})
+	</select>
+	<select id="selectYearSalesGoal" parameterType="map"
+		resultType="YearGoalResultDTO">
+		SELECT
+		sum,
+		goalYear
+		FROM
+		(
+		SELECT
+		sum(d.TOTPRICE) sum
+		FROM
+		ORD o ,
+		DETAIL d
+		WHERE
+		o.ORDNO =
+		d.ORDNO
+		AND TO_CHAR(o.ORDDT, 'YYYY') =
+		#{currentYy}
+		AND o.STNO =
+		#{accountStNo}
+		),(
+		SELECT
+		y.YEARGOALSALES
+		goalYear
+		FROM
+		YGOAL y
+		WHERE
+		y.GOALYY = #{currentYy}
+		AND
+		y.STNO =
+		#{accountStNo})
 	</select>
 </mapper>
