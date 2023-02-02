@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ import kr.co.dbcafe.vo.PeriodCompResultDTO;
 import kr.co.dbcafe.vo.PeriodResultDTO;
 
 @RestController
+@RequestMapping(value = "/period")
 public class OrderController {
 
 	@Autowired
@@ -22,7 +24,7 @@ public class OrderController {
 
 	// 시간대별 조회
 	@GetMapping("/utime")
-	public List<PeriodResultDTO> viewByUnitTime(@RequestParam(defaultValue = "2020-03-01") String s,
+	public List<PeriodResultDTO> viewByUnitTime(@RequestParam("s") String s,
 			@RequestParam(defaultValue = "2020-03-10") String e, @RequestParam(defaultValue = "1001") List<String> st) {
 		List<PeriodResultDTO> dtos = new ArrayList<>();
 		Map<String, Object> map = new HashMap<>();
