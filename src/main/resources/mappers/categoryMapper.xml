@@ -17,28 +17,6 @@
 		to_char(o.ORDDT , 'YYYY-MM-DD') >= #{startDay}
 		AND to_char(o.ORDDT , 'YYYY-MM-DD') <= #{endDay}
 		]]> 
-		<!--  
-		<choose>
-			<when test="startDay.length() == 10">
-				<![CDATA[
-				to_char(o.ORDDT , 'YYYY-MM-DD') >= #{startDay}
-				AND to_char(o.ORDDT , 'YYYY-MM-DD') <= #{endDay}
-				]]>
-			</when>
-			<when test="startDay.length() == 7">
-				<![CDATA[
-				to_char(o.ORDDT , 'YYYY-MM') >= #{startDay}
-				AND to_char(o.ORDDT , 'YYYY-MM') <= #{endDay}
-				]]>
-			</when>
-			<when test="startDay.length() == 4">
-				<![CDATA[
-				to_char(o.ORDDT , 'YYYY') >= #{startDay}
-				AND to_char(o.ORDDT , 'YYYY') <= #{endDay}
-				]]>
-			</when>
-		</choose>
-		-->
 		AND o.ordNo = d.ORDNO AND d.GDNO = g.GDNO AND g.CATNO = c.CATNO 
 		GROUP BY c.CATNM 
 	</select>
@@ -51,47 +29,7 @@
 		to_char(o.ORDDT , 'YYYY-MM-DD') >= #{startDay}
 		AND to_char(o.ORDDT , 'YYYY-MM-DD') <= #{endDay}
 		]]>
-		<!-- 
-		<choose>
-			<when test="startDay.length() == 10">
-				<![CDATA[
-				to_char(o.ORDDT , 'YYYY-MM-DD') >= #{startDay}
-				AND to_char(o.ORDDT , 'YYYY-MM-DD') <= #{endDay}
-				]]>
-			</when>
-			<when test="startDay.length() == 7">
-				<![CDATA[
-				to_char(o.ORDDT , 'YYYY-MM') >= #{startDay}
-				AND to_char(o.ORDDT , 'YYYY-MM') <= #{endDay}
-				]]>
-			</when>
-			<when test="startDay.length() == 4">
-				<![CDATA[
-				to_char(o.ORDDT , 'YYYY') >= #{startDay}
-				AND to_char(o.ORDDT , 'YYYY') <= #{endDay}
-				]]>
-			</when>
-		</choose>
-		 -->
 		AND o.ordNo = d.ORDNO AND d.GDNO = g.GDNO AND g.CATNO = c.CATNO 
 		GROUP BY c.CATNM 
-	</select>
-	<!-- 카테고리 매출별 상세 메뉴 가격 조회 쿼리 -->
-	<!-- 
-	<select id="menuSum" resultType="categoryMenuDTO" parameterType="hashmap">
-		SELECT g.GDNM as menu , COUNT(*) as mcount, SUM(g.PRICE) as msum
-		FROM ORD o , DETAIL d , GOODS g , CATEGORY c 
-		WHERE o.STNO = #{o.STNO} AND 
-		<![CDATA[
-		TO_char(o.ORDDT , 'YYYY-MM-DD') >= #{startDay}
-		AND TO_char(o.ORDDT , 'YYYY-MM-DD') <= #{endDay}
-		]]>
-		AND o.ordNo = d.ORDNO AND d.GDNO = g.GDNO AND g.CATNO = c.CATNO 
-		AND c.CATNM = '커피'
-		GROUP BY g.GDNM 
-	</select>
-	 -->
-	<select id="selectAll" resultType="categoryVO">
-		select * from category
 	</select>
 </mapper>

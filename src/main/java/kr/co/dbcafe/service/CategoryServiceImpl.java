@@ -36,32 +36,5 @@ public class CategoryServiceImpl implements CategoryService {
 			e.printStackTrace();
 		}
 		return list;
-	}
-	
-
-//	@Override
-//	public List<CategoryVO> list() {
-//		List<CategoryVO> list = null;
-//		try {
-//			list = categoryDAO.selectAll();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return list;
-//	}
-//
-//	@Override
-//	public Map<String, Object> selectOrd(String startDate, String endDate) {
-//		Map<String, Object> map = new HashMap<>();
-//		try {
-//			map.put("startDate",startDate );
-//			map.put("endDate",endDate );
-//			categoryDAO.selectOrd(map);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return map;
-//	}
-	
-	
+	}	
 }
