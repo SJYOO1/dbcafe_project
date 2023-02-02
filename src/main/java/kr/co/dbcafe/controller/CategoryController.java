@@ -44,7 +44,7 @@ public class CategoryController {
 									Model model ){
 		Map<String, Object> map = new HashMap<>();
 		map.put("startDay", s);
-		map.put("EndDay", e);
+		map.put("endDay", e);
 		List<CategoryDTO> list = categoryService.categorySum(map);
 		
 		model.addAttribute("list", list);
@@ -57,7 +57,7 @@ public class CategoryController {
 									  Model model ){
 		Map<String, Object> map = new HashMap<>();
 		map.put("startDay", s);
-		map.put("EndDay", e);
+		map.put("endDay", e);
 		List<CategoryDTO> list = categoryService.categoryCount(map);
 		model.addAttribute("list", list);
 		return "count";

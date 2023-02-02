@@ -77,6 +77,7 @@
 		GROUP BY c.CATNM 
 	</select>
 	<!-- 카테고리 매출별 상세 메뉴 가격 조회 쿼리 -->
+	<!-- 
 	<select id="menuSum" resultType="categoryMenuDTO" parameterType="hashmap">
 		SELECT g.GDNM as menu , COUNT(*) as mcount, SUM(g.PRICE) as msum
 		FROM ORD o , DETAIL d , GOODS g , CATEGORY c 
@@ -89,6 +90,7 @@
 		AND c.CATNM = '커피'
 		GROUP BY g.GDNM 
 	</select>
+	 -->
 	<select id="selectAll" resultType="categoryVO">
 		select * from category
 	</select>
