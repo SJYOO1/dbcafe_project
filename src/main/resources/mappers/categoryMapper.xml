@@ -8,27 +8,15 @@
 	카테고리별 매출 비중일때는 csum - 판매 금액
 	카테고리별 판매량 비중일때는 ccount - 판매 건수
 	 -->
-	 <!-- 카테고리별 매출 조회 쿼리 -->
+	 <!-- 카테고리별 조회 쿼리 -->
 	<select id="categorySum" resultType="categoryDTO" parameterType="hashmap">
-		SELECT c.CATNM as category , SUM(g.PRICE) as csum 
+		SELECT c.CATNM as category , SUM(g.PRICE) as csum , COUNT(*) as ccount
 		FROM ORD o , DETAIL d , GOODS g , CATEGORY c 
 		WHERE o.STNO = '1001' AND
 		<![CDATA[
 		to_char(o.ORDDT , 'YYYY-MM-DD') >= #{startDay}
 		AND to_char(o.ORDDT , 'YYYY-MM-DD') <= #{endDay}
 		]]> 
-		AND o.ordNo = d.ORDNO AND d.GDNO = g.GDNO AND g.CATNO = c.CATNO 
-		GROUP BY c.CATNM 
-	</select>
-	<!-- 카테고리별 판매량 조회 쿼리 -->
-	<select id="categoryCount" resultType="categoryDTO" parameterType="hashmap">
-		SELECT c.CATNM as category , COUNT(*) as ccount
-		FROM ORD o , DETAIL d , GOODS g , CATEGORY c 
-		WHERE o.STNO = '1001' AND 
-		<![CDATA[
-		to_char(o.ORDDT , 'YYYY-MM-DD') >= #{startDay}
-		AND to_char(o.ORDDT , 'YYYY-MM-DD') <= #{endDay}
-		]]>
 		AND o.ordNo = d.ORDNO AND d.GDNO = g.GDNO AND g.CATNO = c.CATNO 
 		GROUP BY c.CATNM 
 	</select>

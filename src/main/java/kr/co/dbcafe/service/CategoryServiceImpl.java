@@ -26,15 +26,4 @@ public class CategoryServiceImpl implements CategoryService {
 		}
 		return list;
 	}
-	// 카테고리별 판매량 조회
-	@Override
-	public List<CategoryDTO> categoryCount(Map<String, Object> map) {
-		List<CategoryDTO> list = null;
-		try {
-			list = categoryDAO.categoryCount(map);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}	
 }

@@ -10,8 +10,6 @@ import kr.co.dbcafe.vo.CategoryDTO;
 
 @Mapper
 public interface CategoryDAO {
-	// 1. 카테고리별 매출 비중
+	// 카테고리별 매출
 	List<CategoryDTO> categorySum(Map<String, Object> map) throws SQLException;
-	// 2. 카테고리별 판매량 비중
-	List<CategoryDTO> categoryCount(Map<String, Object> map) throws SQLException;
 }
