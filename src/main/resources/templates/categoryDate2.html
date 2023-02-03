@@ -36,17 +36,14 @@ div {
 					endDay : endDay
 				},
 				success : function(cdata) {
-// 					$("#info").empty();
+					$("#info").empty();
 					$.each(cdata, function(index, item) {
-						category[index] = item.category;
-						csum[index] = item.csum;
-						
-// 						$("#info").append(index + 1 + ". ");
-// 						$("#info").append(item.category + " : ");
-// 						$("#info").append(item.csum + "원</br>");
-// 						$("#info").append(index + 1 + ". ");
-// 						$("#info").append(item.category + " : ");
-// 						$("#info").append(item.ccount + "건</br>");
+						$("#info").append(index + 1 + ". ");
+						$("#info").append(item.category + " : ");
+						$("#info").append(item.csum + "원</br>");
+						$("#info").append(index + 1 + ". ");
+						$("#info").append(item.category + " : ");
+						$("#info").append(item.ccount + "건</br>");
 					});
 				},
 				error : function(data) {
