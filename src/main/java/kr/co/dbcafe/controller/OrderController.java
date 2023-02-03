@@ -24,8 +24,8 @@ public class OrderController {
 
 	// 시간대별 조회
 	@GetMapping("/utime")
-	public List<PeriodResultDTO> viewByUnitTime(@RequestParam("s") String s,
-			@RequestParam(defaultValue = "2020-03-10") String e, @RequestParam(defaultValue = "1001") List<String> st) {
+	public List<PeriodResultDTO> viewByUnitTime(@RequestParam("s") String s, @RequestParam("e") String e,
+			@RequestParam(value = "st[]") List<String> st) {
 		List<PeriodResultDTO> dtos = new ArrayList<>();
 		Map<String, Object> map = new HashMap<>();
 		map.put("start", s);

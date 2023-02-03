@@ -10,10 +10,12 @@
 		resultType="PeriodResultDTO">
 		SELECT
 		to_char(o2.ORDDT , 'hh24') time,
-		sum(d.TOTPRICE) sum
+		sum(d.TOTPRICE) sum,
+		s.stNm stNm
 		FROM
 		DETAIL d,
-		ORD o2
+		ORD o2,
+		STORE s
 		WHERE
 		d.ORDNO IN (
 		SELECT
@@ -47,9 +49,9 @@
 			#{stNo}
 		</foreach>
 		)
-		AND D.ORDNO = O2.ORDNO
+		AND D.ORDNO = O2.ORDNO AND o2.stNo = s.stNo
 		GROUP BY
-		to_char(o2.ORDDT , 'hh24')
+		to_char(o2.ORDDT , 'hh24'), s.stNm
 		ORDER BY
 		to_char(o2.ORDDT , 'hh24')
 	</select>
@@ -61,21 +63,25 @@
 		<choose>
 			<when test="start.length() == 10">
 				to_char(o2.ORDDT , 'YYYY-MM-DD') time,
-				sum(d.TOTPRICE) sum
+				sum(d.TOTPRICE) sum,
+				s.stNm stNm
 			</when>
 			<when test="start.length() == 7">
 				to_char(o2.ORDDT , 'YYYY-MM') time,
 				sum(d.TOTPRICE)
-				sum
+				sum,
+				s.stNm stNm
 			</when>
 			<when test="start.length() == 4">
 				to_char(o2.ORDDT , 'YYYY') time,
-				sum(d.TOTPRICE) sum
+				sum(d.TOTPRICE) sum,
+				s.stNm stNm
 			</when>
 		</choose>
 		FROM
 		DETAIL d,
-		ORD o2
+		ORD o2,
+		STORE s
 		WHERE
 		d.ORDNO IN (
 		SELECT
@@ -109,23 +115,26 @@
 			#{stNo}
 		</foreach>
 		)
-		AND D.ORDNO = O2.ORDNO
+		AND D.ORDNO = O2.ORDNO AND o2.stNo = s.stNo
 		<choose>
 			<when test="start.length() == 10">
 				GROUP BY
-				to_char(o2.ORDDT , 'YYYY-MM-DD')
+				to_char(o2.ORDDT , 'YYYY-MM-DD'),
+				s.stNm
 				ORDER BY
 				to_char(o2.ORDDT , 'YYYY-MM-DD')
 			</when>
 			<when test="start.length() == 7">
 				GROUP BY
-				to_char(o2.ORDDT , 'YYYY-MM')
+				to_char(o2.ORDDT , 'YYYY-MM'),
+				s.stNm
 				ORDER BY
 				to_char(o2.ORDDT , 'YYYY-MM')
 			</when>
 			<when test="start.length() == 4">
 				GROUP BY
-				to_char(o2.ORDDT , 'YYYY')
+				to_char(o2.ORDDT , 'YYYY'),
+				s.stNm
 				ORDER BY
 				to_char(o2.ORDDT , 'YYYY')
 			</when>

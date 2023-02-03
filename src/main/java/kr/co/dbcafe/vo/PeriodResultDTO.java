@@ -6,4 +6,5 @@ import lombok.Data;
 public class PeriodResultDTO {
 	private String time;
 	private int sum;
+	private String stNm;
 }
