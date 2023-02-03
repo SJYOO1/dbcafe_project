@@ -1,0 +1,37 @@
+server:
+<<<<<<< HEAD
+  port: 80
+=======
+  port: 8080
+>>>>>>> Feat/menumanagement
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  thymeleaf:
+    prefix: classpath:templates/
+    check-template-location: true
+    suffix: .html
+    mode: HTML5
+    cache: false
+    template-resolver-order: 0
+  datasource:
+<<<<<<< HEAD
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@127.0.0.1:1521/
+=======
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@127.0.0.1:1521/xe
+>>>>>>> Feat/menumanagement
+    username: dbcafe
+    password: 221209
+mybatis:
+  type-aliases-package: kr.co.dbcafe.vo
+<<<<<<< HEAD
+  mapper-locations: classpath:mappers/**/*.xml
+=======
+  mapper-locations: classpath:mappers/*.xml
+>>>>>>> Feat/menumanagement
