@@ -25,8 +25,8 @@ public class CategoryRestController {
 	// 폼에서 넘어온 값을 받는다.
 	// 카테고리별 매출
 	@GetMapping("/category")
-	public List<CategoryDTO> categorySelectSum(@RequestParam("startDay") String s,
-											   @RequestParam("endDay") String e,
+	public List<CategoryDTO> categorySelectSum(@RequestParam(value="startDay") String s,
+											   @RequestParam(value="endDay" ) String e,
 											   Model model ){
 		Map<String, Object> map = new HashMap<>();
 		map.put("startDay", s);

@@ -9,7 +9,7 @@
 	카테고리별 판매량 비중일때는 ccount - 판매 건수
 	 -->
 	 <!-- 카테고리별 조회 쿼리 -->
-	<select id="categorySum" resultType="categoryDTO" parameterType="hashmap">
+	<select id="categorySum" resultType="CategoryDTO" parameterType="hashmap">
 		SELECT c.CATNM as category , SUM(g.PRICE) as csum , COUNT(*) as ccount
 		FROM ORD o , DETAIL d , GOODS g , CATEGORY c 
 		WHERE o.STNO = '1001' AND
