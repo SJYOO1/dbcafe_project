@@ -5,6 +5,10 @@
 <mapper namespace="kr.co.dbcafe.dao.OrderDAO">
 	<!-- namespace를 인터페이스 이름과 일치 시켜야 한다. -->
 
+	<select id="selectTest" resultType="ResultTestDTO">
+
+	</select>
+
 	<!-- 시간대별 조회 -->
 	<select id="selectByUnitTime" parameterType="map"
 		resultType="PeriodResultDTO">
@@ -51,7 +55,8 @@
 		)
 		AND D.ORDNO = O2.ORDNO AND o2.stNo = s.stNo
 		GROUP BY
-		to_char(o2.ORDDT , 'hh24'), s.stNm
+		to_char(o2.ORDDT ,
+		'hh24'), s.stNm
 		ORDER BY
 		to_char(o2.ORDDT , 'hh24')
 	</select>
@@ -121,7 +126,8 @@
 				GROUP BY
 				to_char(o2.ORDDT , 'YYYY-MM-DD'),
 				s.stNm
-				ORDER BY
+				ORDER
+				BY
 				to_char(o2.ORDDT , 'YYYY-MM-DD')
 			</when>
 			<when test="start.length() == 7">
