@@ -1,179 +1,118 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!----======== CSS ======== -->
 <link rel="stylesheet" href="css/style.css">
-
-    <!----===== Boxicons CSS ===== -->
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://unpkg.com/jquery@3.6.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
-<!--     <script type="text/javascript" src="js/category.js"></script>  -->
-    
-    <title> Cafe Account Management System ☆★☆★</title>
-<script type="text/javascript">
-	$(function() {
-		$("#btn").click(function() {
-			var startDay = $("input[name='startDay']").val();
-			var endDay = $("input[name='endDay']").val();
-			// 서버와 비동기 통신
-			// 컨트롤러에 값 넘겨주기
-			$.ajax({
-				url : "/category",
-				contentType : "application/json;charset=utf-8",
-				dataType : "json",
-				type : "get",
-				data : {
-					startDay : startDay,
-					endDay : endDay
-				},
-				success : function(cdata) {
-					google.charts.load('current', {'packages':['corechart']});
-				      // Google Visualization API가 로드될 때 실행할 콜백함수를 설정합니다.
-				      google.charts.setOnLoadCallback(drawChart);
-				      // 데이터 테이블을 생성하고 채우는 콜백,
-				      // 원형 차트를 인스턴스화하고 데이터를 전달하고
-				      // 그립니다. 
-				      function drawChart() {
-				    	  var data = new google.visualization.DataTable();
-				    	  data.addColumn('string', '메뉴항목');
-				    	  data.addColumn('number', '매출비중');
-				    	 for(var i=0;i<cdata.length;i++){
-				    		  data.addRow([
-				    			cdata[i].category, cdata[i].csum
-				    		  ]);
-				    	 }				    	
-				        // 차트옵션선택
-				        var options = {};
-				        // 몇 가지 옵션을 전달하여 차트를 인스턴스화하고 그립니다.
-				        var chart = new google.visualization.PieChart(document.getElementById('categoryAccount'));
-				        chart.draw(data, options);
-				      }
-				      
-					  google.charts.load('current', {'packages':['corechart']});
-				      google.charts.setOnLoadCallback(drawChart2);
-				      function drawChart2() {
-				    	  var data = new google.visualization.DataTable();
-				    	  data.addColumn('string', '메뉴항목');
-				    	  data.addColumn('number', '매출비중');
-				    	 for(var i=0;i<cdata.length;i++){
-				    		  data.addRow([
-				    			cdata[i].category, cdata[i].ccount
-				    		  ]);
-				    	 }
-				        var options = {'title':'카테고리별 판매량 비중 (건)',
-				                       'width':800,
-				                       'height':600};
-				        var chart = new google.visualization.PieChart(document.getElementById('categoryQuantity'));
-				        chart.draw(data, options);
-				      }
-				},
-				error : function(data) {
-					alert("Error");
-				}
-			});
-		});
-	});
-</script>
+<!----===== Boxicons CSS ===== -->
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'
+	rel='stylesheet'>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://unpkg.com/jquery@3.6.1/dist/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/category.js"></script>
+<title>Cafe Account Management System ☆★☆★</title>
 </head>
 <body>
 	<nav class="sidebar close">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="images/logo.png" alt="">
-                </span>
-                <div class="text logo-text">
-                <a href="index.html" style="text-decoration : none">
-                    <span class="name">Cafe Account Management System</span>
-                    <span class="profession">따봉카페 수원점</span>
-                  </a>
-                </div>
-            </div>
-            <i class='bx bx-chevron-right toggle'></i>
-        </header>
-        <div class="menu-bar">
-            <div class="menu">
-                <!--
+		<header>
+			<div class="image-text">
+				<span class="image"> <img src="images/logo.png" alt="">
+				</span>
+
+				<div class="text logo-text">
+					<a href="index.html" style="text-decoration: none"> <span
+						class="name">Cafe Account Management System</span> <span
+						class="profession">따봉카페 수원점</span>
+					</a>
+				</div>
+			</div>
+
+			<i class='bx bx-chevron-right toggle'></i>
+		</header>
+
+		<div class="menu-bar">
+			<div class="menu">
+				<!--
                 <li class="search-box">
                     <i class='bx bx-search icon'></i>
                     <input type="text" placeholder="Search...">
                 </li>
                 -->
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="term.html">
-                            <i class='bx bx-bar-chart-alt-2 icon'></i>
-                            <span class="text nav-text">기간별 매출 조회 · 분석</span>
-                        </a>
-                    </li>
+				<ul class="menu-links">
+					<li class="nav-link">
+						<a href="term.html"> 
+							<i class='bx bx-bar-chart-alt-2 icon'></i> 
+							<span class="text nav-text">기간별 매출 조회 · 분석</span>
+						</a>
+					</li>
 
-                    <li class="nav-link">
-                        <a href="category.html">
-                            <i class='bx bx-bar-chart-alt-2 icon'></i>
-                            <span class="text nav-text">품목별 매출 · 판매량 비중 조회</span>
-                        </a>
-                    </li>
+					<li class="nav-link"><a href="category.html"> <i
+							class='bx bx-bar-chart-alt-2 icon'></i> <span
+							class="text nav-text">품목별 매출 · 판매량 비중 조회</span>
+					</a></li>
 
-                    <li class="nav-link">
-                        <a href="orderPayment.html">
-                            <i class='bx bx-bar-chart-alt-2 icon'></i>
-                            <span class="text nav-text">주문 · 결제 방식 조회</span>
-                        </a>
-                    </li>
+					<li class="nav-link"><a href="orderPayment.html"> <i
+							class='bx bx-bar-chart-alt-2 icon'></i> <span
+							class="text nav-text">주문 · 결제 방식 조회</span>
+					</a></li>
 
-                    <li class="nav-link">
-                        <a href="menu.html">
-                            <i class='bx bx-bar-chart-alt-2 icon'></i>
-                            <span class="text nav-text">메뉴 관리</span>
-                        </a>
-                    </li>
+					<li class="nav-link"><a href="menu.html"> <i
+							class='bx bx-bar-chart-alt-2 icon'></i> <span
+							class="text nav-text">메뉴 관리</span>
+					</a></li>
 
-                </ul>
-            </div>
-            <div class="bottom-content">
-                <li class="">
-                    <a href="#">
-                        <i class='bx bx-log-out icon'></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark mode</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-            </div>
-        </div>
-    </nav>
-    <section class="home">
-        <div class="text"> 품목별 매출 · 판매량 비중 조회 </div>
-            <div class="position">
-            시작일 : <input type="date" name="startDay" id="startDay" value="2023-02-03"> ~                
-            종료일 : <input type="date" name="endDay" id="endDay" value="2023-02-03">
-           <button id="btn">제출</button>
-           </div>
-        <div class="graph">
-            <div class="categoryAccountWrap">
-                <span class="categoryAccountTitle"> 품목별 매출액 조회 </span>
-                <div class="categoryAccount" id="categoryAccount"></div>
-            </div>
-            <span class="categoryQuantityTitle"> 품목별 판매량 조회 </span>
-            <div class="categoryQuantityWrap">
-                <div class="categoryQuantity" id="categoryQuantity"></div>
-            </div>
-        </div>  
-    </section>
-    <script>
+				</ul>
+			</div>
+
+			<div class="bottom-content">
+				<li class=""><a href="#"> <i class='bx bx-log-out icon'></i>
+						<span class="text nav-text">Logout</span>
+				</a></li>
+				<li class="mode">
+					<div class="sun-moon">
+						<i class='bx bx-moon icon moon'></i> <i class='bx bx-sun icon sun'></i>
+					</div> <span class="mode-text text">Dark mode</span>
+
+					<div class="toggle-switch">
+						<span class="switch"></span>
+					</div>
+				</li>
+
+			</div>
+		</div>
+
+	</nav>
+
+	<section class="home">
+		<div class="text">품목별 매출 · 판매량 비중 조회</div> 
+		<div class="position">
+			시작일 : <input type="date" name="startDay" id="startDay" value="2020-03-01"> 
+			~ 종료일 : <input type="date" name="endDay" id="endDay" value="2020-03-10">
+			<button id="btn">제출</button>
+		</div> 
+		<div class="graph">
+			<div class="categoryAccountWrap">
+				<span class="categoryAccountTitle"> 품목별 매출액 조회 </span>
+				<div class="categoryAccount" id="categoryAccount"></div>
+			</div>
+
+			<span class="categoryQuantityTitle"> 품목별 판매량 조회 </span>
+			<div class="categoryQuantityWrap">
+				<div class="categoryQuantity" id="categoryQuantity"></div>
+			</div>
+		</div>
+	</section>
+
+	<script>
         const body = document.querySelector('body'),
             sidebar = body.querySelector('nav'),
             toggle = body.querySelector(".toggle"),
@@ -193,7 +132,8 @@
                 modeText.innerText = "Dark mode";
             }
         });
+//      document.getElementById('startDay').value=new Date().toISOString().slice(0,10);
+// 		document.getElementById('endDay').value=new Date().toISOString().slice(0,10);
     </script>
-
 </body>
 </html>

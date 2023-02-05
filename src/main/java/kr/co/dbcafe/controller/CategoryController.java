@@ -10,6 +10,6 @@ public class CategoryController {
 	// 폼을 띄운다.
 	@GetMapping(value = {"/categoryDate"})
 	public String index(Model model){
-		return "category";
+		return "categoryDate";
 	}
 }

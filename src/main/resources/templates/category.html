@@ -48,10 +48,12 @@
                 </li>
                 -->
 				<ul class="menu-links">
-					<li class="nav-link"><a href="term.html"> <i
-							class='bx bx-bar-chart-alt-2 icon'></i> <span
-							class="text nav-text">기간별 매출 조회 · 분석</span>
-					</a></li>
+					<li class="nav-link">
+						<a href="term.html"> 
+							<i class='bx bx-bar-chart-alt-2 icon'></i> 
+							<span class="text nav-text">기간별 매출 조회 · 분석</span>
+						</a>
+					</li>
 
 					<li class="nav-link"><a href="category.html"> <i
 							class='bx bx-bar-chart-alt-2 icon'></i> <span
@@ -91,14 +93,12 @@
 	</nav>
 
 	<section class="home">
-		<div class="text">품목별 매출 · 판매량 비중 조회</div>
-		<!--         <form action="/category" method="get" class="categoryDate"> -->
-		
+		<div class="text">품목별 매출 · 판매량 비중 조회</div> 
 		<div class="position">
 			시작일 : <input type="date" name="startDay" id="startDay" value="2020-03-01"> 
 			~ 종료일 : <input type="date" name="endDay" id="endDay" value="2020-03-10">
 			<button id="btn">제출</button>
-		</div> <br />
+		</div> 
 		<div class="graph">
 			<div class="categoryAccountWrap">
 				<span class="categoryAccountTitle"> 품목별 매출액 조회 </span>
@@ -132,6 +132,8 @@
                 modeText.innerText = "Dark mode";
             }
         });
+//         document.getElementById('startDay').value=new Date().toISOString().slice(0,10);
+// 		document.getElementById('endDay').value=new Date().toISOString().slice(0,10);
     </script>
 </body>
 </html>
