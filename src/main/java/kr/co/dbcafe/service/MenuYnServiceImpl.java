@@ -10,7 +10,7 @@ import kr.co.dbcafe.dao.MenuYnDAO;
 import kr.co.dbcafe.vo.MenuYnResDTO;
 import kr.co.dbcafe.vo.MenuYnUpdateReqDTO;
 
-@Service
+@Service("menuYnService")
 public class MenuYnServiceImpl implements MenuYnService {
 
 	@Autowired
