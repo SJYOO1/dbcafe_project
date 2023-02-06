@@ -28,10 +28,24 @@ $(function(){
 					}
 
 					var options = {
-						'title': '카테고리별 매출 비중 (원)',
 						'backgroundColor' : 'none',
-						'width': 800,
-						'height': 700
+						legend : {
+                    			position: 'right', 
+                    			textStyle: {
+                      				color: '#707070', 
+                      				fontSize: 15,
+                      				fontName :'Poppins',
+                      				bold : true
+                      	}},
+                  		pieSliceTextStyle : {
+                    			color: 'white', 
+                   	 			fontName: 'Poppins', 
+                    			fontSize: 18
+                    	},
+                  		chartArea : {
+                  		width : 600,
+                  		height : 600
+						}
 					};
 					var chart = new google.visualization.PieChart(document.getElementById('categoryAccount'));
 					chart.draw(data, options);
@@ -50,9 +64,23 @@ $(function(){
 					}
 					var options = {
 						'backgroundColor' : 'none',
-						'title': '카테고리별 판매량 비중 (건)',
-						'width': 800,
-						'height': 700
+						legend : {
+                    			position: 'right', 
+                    			textStyle: {
+                      				color: '#707070', 
+                      				fontSize: 15,
+                      				fontName :'Poppins',
+                      				bold : true
+                      	}},
+                  		pieSliceTextStyle : {
+                    			color: 'white', 
+                   	 			fontName: 'Poppins', 
+                    			fontSize: 18
+                    	},
+                  		chartArea : {
+                  		width : 600,
+                  		height : 600
+						}
 					};
 					var chart = new google.visualization.PieChart(document.getElementById('categoryQuantity'));
 					chart.draw(data, options);
@@ -93,10 +121,24 @@ $(function() {
 					}
 
 					var options = {
-						'title': '카테고리별 매출 비중 (원)',
 						'backgroundColor' : 'none',
-						'width': 800,
-						'height': 700
+						legend : {
+                    			position: 'right', 
+                    			textStyle: {
+                      				color: '#707070', 
+                      				fontSize: 15,
+                      				fontName :'Poppins',
+                      				bold : true
+                      	}},
+                  		pieSliceTextStyle : {
+                    			color: 'white', 
+                   	 			fontName: 'Poppins', 
+                    			fontSize: 18
+                    	},
+                  		chartArea : {
+                  		width : 600,
+                  		height : 600
+						}
 					};
 					var chart = new google.visualization.PieChart(document.getElementById('categoryAccount'));
 					chart.draw(data, options);
@@ -114,10 +156,24 @@ $(function() {
 						]);
 					}
 					var options = {
-						'title': '카테고리별 판매량 비중 (건)',
 						'backgroundColor' : 'none',
-						'width': 800,
-						'height': 700
+						legend : {
+                    			position: 'right', 
+                    			textStyle: {
+                      				color: '#707070', 
+                      				fontSize: 15,
+                      				fontName :'Poppins',
+                      				bold : true
+                      	}},
+                  		pieSliceTextStyle : {
+                    			color: 'white', 
+                   	 			fontName: 'Poppins', 
+                    			fontSize: 18
+                    	},
+                  		chartArea : {
+                  		width : 600,
+                  		height : 600
+						}
 					};
 					var chart = new google.visualization.PieChart(document.getElementById('categoryQuantity'));
 					chart.draw(data, options);
