@@ -1,6 +1,7 @@
 package kr.co.dbcafe.controller;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.dbcafe.service.OrderService;
 import kr.co.dbcafe.vo.PeriodCompResultDTO;
-import kr.co.dbcafe.vo.PeriodResultDTO;
+import kr.co.dbcafe.vo.OrderResultVO;
 
 @RestController
 @RequestMapping(value = "/period")
@@ -24,28 +25,26 @@ public class OrderController {
 
 	// 시간대별 조회
 	@GetMapping("/utime")
-	public List<PeriodResultDTO> viewByUnitTime(@RequestParam("s") String s, @RequestParam("e") String e,
+	public List<OrderResultVO> selectSalesByTime(@RequestParam("s") String s, @RequestParam("e") String e,
 			@RequestParam(value = "st[]") List<String> st) {
-		List<PeriodResultDTO> dtos = new ArrayList<>();
+		List<OrderResultVO> stNm = new ArrayList<>();
 		Map<String, Object> map = new HashMap<>();
 		map.put("start", s);
 		map.put("end", e);
-		map.put("stNoList", st);
-		dtos = orderService.selectByUnitTime(map);
-		return dtos;
+		stNm = orderService.selectSalesByTime(st, map);
+		return stNm;
 	}
 
 	// 날짜별 조회
 	@GetMapping("/udate")
-	public List<PeriodResultDTO> viewByUnitDate(@RequestParam(defaultValue = "2020-03-01") String s,
-			@RequestParam(defaultValue = "2020-03-10") String e, @RequestParam(defaultValue = "1001") List<String> st) {
-		List<PeriodResultDTO> dtos = new ArrayList<>();
+	public List<OrderResultVO> selectSalesByDate(@RequestParam("s") String s, @RequestParam("e") String e,
+			@RequestParam(value = "st") List<String> st) {
+		List<OrderResultVO> stNm = new ArrayList<>();
 		Map<String, Object> map = new HashMap<>();
 		map.put("start", s);
 		map.put("end", e);
-		map.put("stNoList", st);
-		dtos = orderService.selectByUnitDate(map);
-		return dtos;
+		stNm = orderService.selectSalesByDate(st, map);
+		return stNm;
 	}
 
 	// 비교조회
@@ -64,4 +63,5 @@ public class OrderController {
 		dtos1 = orderService.selectCompByStore(map);
 		return dtos1;
 	}
+
 }

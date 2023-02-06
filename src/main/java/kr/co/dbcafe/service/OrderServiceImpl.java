@@ -1,6 +1,7 @@
 package kr.co.dbcafe.service;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import kr.co.dbcafe.dao.OrderDAO;
 import kr.co.dbcafe.vo.PeriodCompResultDTO;
 import kr.co.dbcafe.vo.PeriodResultDTO;
+import kr.co.dbcafe.vo.OrderResultVO;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
@@ -50,4 +52,41 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return dtos;
 	}
+
+	// Test용 Service 시작
+	@Override
+	public List<OrderResultVO> selectSalesByTime(List<String> stNo, Map<String, Object> map) {
+		List<OrderResultVO> stNm = new ArrayList<>();
+		try {
+			for (int i = 0; i < stNo.size(); i++) {
+				OrderResultVO dto = new OrderResultVO();
+				dto.setStNm(orderDAO.selectStNm(stNo.get(i)));
+				map.put("stNo", stNo.get(i));
+				dto.setSumByTimes(orderDAO.sumByUnitTimes(map));
+				stNm.add(dto);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stNm;
+	}
+	@Override
+	public List<OrderResultVO> selectSalesByDate(List<String> stNo, Map<String, Object> map) {
+		List<OrderResultVO> stNm = new ArrayList<>();
+		try {
+			for (int i = 0; i < stNo.size(); i++) {
+				OrderResultVO dto = new OrderResultVO();
+				dto.setStNm(orderDAO.selectStNm(stNo.get(i)));
+				map.put("stNo", stNo.get(i));
+				dto.setSumByTimes(orderDAO.sumByUnitDate(map));
+				stNm.add(dto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return stNm;
+	}
+	// Test용 Service 종료
 }
