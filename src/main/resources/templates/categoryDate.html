@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <meta charset="UTF-8">
@@ -29,7 +30,7 @@
 				</span>
 
 				<div class="text logo-text">
-					<a href="index.html" style="text-decoration: none"> <span
+					<a th:href="@{/}" style="text-decoration: none"> <span
 						class="name">Cafe Account Management System</span> <span
 						class="profession">따봉카페 수원점</span>
 					</a>
@@ -49,23 +50,23 @@
                 -->
 				<ul class="menu-links">
 					<li class="nav-link">
-						<a href="term.html"> 
+						<a th:href="@{/term}">
 							<i class='bx bx-bar-chart-alt-2 icon'></i> 
 							<span class="text nav-text">기간별 매출 조회 · 분석</span>
 						</a>
 					</li>
 
-					<li class="nav-link"><a href="category.html"> <i
+					<li class="nav-link"><a th:href="@{/categoryDate}"> <i
 							class='bx bx-bar-chart-alt-2 icon'></i> <span
 							class="text nav-text">품목별 매출 · 판매량 비중 조회</span>
 					</a></li>
 
-					<li class="nav-link"><a href="orderPayment.html"> <i
+					<li class="nav-link"><a th:href="@{/orderPayment}"> <i
 							class='bx bx-bar-chart-alt-2 icon'></i> <span
 							class="text nav-text">주문 · 결제 방식 조회</span>
 					</a></li>
 
-					<li class="nav-link"><a href="menu.html"> <i
+					<li class="nav-link"><a th:href="@{/menu}"> <i
 							class='bx bx-bar-chart-alt-2 icon'></i> <span
 							class="text nav-text">메뉴 관리</span>
 					</a></li>

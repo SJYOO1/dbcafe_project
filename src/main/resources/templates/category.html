@@ -41,31 +41,26 @@
 
 		<div class="menu-bar">
 			<div class="menu">
-				<!--
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
-                -->
+
 				<ul class="menu-links">
 					<li class="nav-link">
-						<a href="term.html"> 
+						<a th:href="@{/index.html"> 
 							<i class='bx bx-bar-chart-alt-2 icon'></i> 
 							<span class="text nav-text">기간별 매출 조회 · 분석</span>
 						</a>
 					</li>
 
-					<li class="nav-link"><a href="category.html"> <i
+					<li class="nav-link"><a th:href="@{/templates/categoryDate}"> <i
 							class='bx bx-bar-chart-alt-2 icon'></i> <span
 							class="text nav-text">품목별 매출 · 판매량 비중 조회</span>
 					</a></li>
 
-					<li class="nav-link"><a href="orderPayment.html"> <i
+					<li class="nav-link"><a href="/templates/orderPayment.html"> <i
 							class='bx bx-bar-chart-alt-2 icon'></i> <span
 							class="text nav-text">주문 · 결제 방식 조회</span>
 					</a></li>
 
-					<li class="nav-link"><a href="menu.html"> <i
+					<li class="nav-link"><a th:href="@{/templates/index.html}"> <i
 							class='bx bx-bar-chart-alt-2 icon'></i> <span
 							class="text nav-text">메뉴 관리</span>
 					</a></li>
