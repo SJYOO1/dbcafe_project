@@ -20,7 +20,7 @@ public class LoginController {
 	private LoginService loginService;
 
 	@PostMapping("/login")
-	public void login(@ModelAttribute LoginReqDTO loginReqDTO, HttpSession httpSession) {
+	public String login(@ModelAttribute LoginReqDTO loginReqDTO, HttpSession httpSession) {
 		log.info("받은값 : {}", loginReqDTO);
 		boolean result = loginService.findById(loginReqDTO);
 		if (result == true) {
@@ -29,10 +29,12 @@ public class LoginController {
 			httpSession.setAttribute("stNm", storeDTO.getStNm());
 			httpSession.setAttribute("id", loginReqDTO.getId());
 		}
+		return "index";
 	}
 	
 	@PostMapping("/logout")
-	public void logout(HttpSession session) {
+	public String logout(HttpSession session) {
 		session.invalidate();
+		return "login";
 	}
 }
