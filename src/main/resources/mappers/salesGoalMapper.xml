@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.dbcafe.dao.SalesGoalDAO">
+	<select id="selectMonthSalesGoal" parameterType="map"
+		resultType="MonthGoalResultDTO">
+		SELECT
+		sum,
+		goalMonth
+		FROM
+		(
+		SELECT
+		sum(d.TOTPRICE) sum
+		FROM
+		ORD o,
+		DETAIL d
+		WHERE
+		o.ORDNO = d.ORDNO
+		AND TO_CHAR(o.ORDDT, 'YYYY-MM') =
+		#{currentYm}
+		AND o.STNO = #{accountStNo}
+		),(
+		SELECT
+		m.MONTHGOALSALES
+		goalMonth
+		FROM
+		MGOAL m
+		WHERE
+		m.GOALYM = #{currentYm}
+		AND m.STNO =
+		#{accountStNo})
+	</select>
+	<select id="selectYearSalesGoal" parameterType="map"
+		resultType="YearGoalResultDTO">
+		SELECT
+		sum,
+		goalYear
+		FROM
+		(
+		SELECT
+		sum(d.TOTPRICE) sum
+		FROM
+		ORD o ,
+		DETAIL d
+		WHERE
+		o.ORDNO =
+		d.ORDNO
+		AND TO_CHAR(o.ORDDT, 'YYYY') =
+		#{currentYy}
+		AND o.STNO =
+		#{accountStNo}
+		),(
+		SELECT
+		y.YEARGOALSALES
+		goalYear
+		FROM
+		YGOAL y
+		WHERE
+		y.GOALYY = #{currentYy}
+		AND
+		y.STNO =
+		#{accountStNo})
+	</select>
+</mapper>
