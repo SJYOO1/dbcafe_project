@@ -13,11 +13,12 @@
 		resultType="kr.co.dbcafe.vo.OrderResultVO$SumByTime">
 		SELECT
 		to_char(o2.ORDDT , 'hh24') time,
-		sum(d.TOTPRICE) sum
+		sum(d.TOTPRICE) as sum
 		FROM
 		DETAIL d,
 		ORD o2
-		WHERE d.ORDNO IN
+		WHERE d.ORDNO
+		IN
 		( SELECT
 		o.ORDNO
 		FROM ORD o
@@ -45,7 +46,8 @@
 		AND o.STNO IN #{stNo})
 		AND D.ORDNO = O2.ORDNO
 		GROUP BY
-		to_char(o2.ORDDT, 'hh24')
+		to_char(o2.ORDDT,
+		'hh24')
 		ORDER BY
 		to_char(o2.ORDDT,'hh24')
 	</select>
@@ -137,15 +139,15 @@
 		stNm1
 		FROM
 		DETAIL d,
-		ORD
-		o2,
+		ORD o2,
 		STORE s
 		WHERE
 		d.ORDNO IN (
 		SELECT
 		o.ORDNO
 		FROM
-		ORD o
+		ORD
+		o
 		WHERE
 		<choose>
 			<when test="start1.length() == 10">
@@ -192,8 +194,7 @@
 		SELECT
 		o.ORDNO
 		FROM
-		ORD
-		o
+		ORD o
 		WHERE
 		<choose>
 			<when test="start2.length() == 10">
@@ -222,8 +223,7 @@
 		</foreach>
 		)
 		AND D.ORDNO = O2.ORDNO
-		AND
-		o2.STNO = s.STNO
+		AND o2.STNO = s.STNO
 		GROUP BY
 		s.stnm)
 		WHERE

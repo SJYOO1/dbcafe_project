@@ -8,91 +8,7 @@
 <script src="https://unpkg.com/jquery@3.6.1/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.0/axios.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#btn1")
-				.click(
-						function() {
-							// alert("콜성공!!!");
-							var startDay = $("input[name='startDay']").val();
-							var endDay = $("input[name='endDay']").val();
-							var stNoList = new Array();
-							$("input[name='day-stNo']:checked").each(
-									function(i) {
-										stNoList.push($(this).val());
-									});
-							$
-									.ajax({
-										url : "./period/utime",
-										type : 'GET',
-										data : {
-											s : startDay,
-											e : endDay,
-											st : stNoList
-										},
-										success : function(data) {
-											alert(data[0].sumByTimes[0].sum);
-											alert(stNoList.length);
-											google.charts.load('current',
-													{
-														packages : [
-																'corechart',
-																'bar' ]
-													});
-											google.charts
-													.setOnLoadCallback(drawColColors);
-
-											function drawColColors() {
-												var dataTable = new google.visualization.DataTable();
-												dataTable.addColumn('string',
-														'Time of Day');
-											for(var i=0;i<stNoList.length;i++){
-												switch (stNoList[i]){
-												case "1001":
-												dataTable.addColumn('number','여의도점');			
-												break;
-												case "2001":
-												dataTable.addColumn('number','수원점');			
-												break;
-												case "2002":
-												dataTable.addColumn('number','용인점');			
-												break;
-												}
-											}
-
-												dataTable.addRows([
-														[ '09', 1.5, 3.5 ] ]);
-												dataTable.addRows([
-														[ '10', 1.5, 2.5 ] ]);
-
-												var options = {
-													title : 'Motivation and Energy Level Throughout the Day',
-													colors : [ '#9575cd',
-															'#33ac71' ],
-													hAxis : {
-														title : 'Time of Days'
-													},
-													vAxis : {
-														title : 'Rating (scale of 1-10)'
-													}
-												};
-
-												var chart = new google.visualization.ColumnChart(
-														document
-																.getElementById('chart_div'));
-												chart.draw(dataTable, options);
-											}
-										},
-										error : function() {
-											alert("error");
-										}
-									});
-						});
-
-		/* document.getElementById('startDay').value=new Date().toISOString().slice(0,10); 
-			document.getElementById('endDay').value=new Date().toISOString().slice(0,10); */
-	});
-</script>
+<script type="text/javascript" src="js/viewByTime.js"></script>
 </head>
 <body>
 	<h1>안녕하세요</h1>
@@ -110,6 +26,6 @@
 	<hr />
 	<div id="info"></div>
 	<hr />
-	<div id="chart_div" class="chart-box"></div>
+	<div id="chartByTime" class="chart-box"></div>
 </body>
 </html>
