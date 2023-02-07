@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,12 +25,15 @@ public class CategoryRestController {
 	@GetMapping("/category")
 	public List<CategoryDTO> categorySelectSum(@RequestParam(value="startDay") String s,
 											   @RequestParam(value="endDay" ) String e,
-											   @RequestParam(value="stNo" ) String stNo
+											   HttpSession session
 											   ){
-		Map<String, Object> map = new HashMap<>(); 
+		String stNo = (String)session.getAttribute("stNo");
+		// 아래거 지워야함
+		stNo = "1001";
+		Map<String, Object> map = new HashMap<>();
 		map.put("startDay", s);
 		map.put("endDay", e);
-		map.put("stNo", "1001");
+		map.put("stNo", stNo);
 		List<CategoryDTO> list = categoryService.categorySum(map);
 		return list;
 	}

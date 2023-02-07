@@ -12,8 +12,7 @@ $(function(){
 			type: "get",
 			data: {
 				startDay: '2020-03-01',
-				endDay: '2020-03-01',
-				stNo : '1001'
+				endDay: '2020-03-01'
 			},
 			success: function(cdata) {
 				google.charts.load('current', { 'packages': ['corechart'] });
@@ -27,7 +26,6 @@ $(function(){
 							cdata[i].category, cdata[i].csum
 						]);
 					}
-
 					var options = {
 						'backgroundColor' : 'none',
 						legend : {
@@ -98,7 +96,10 @@ $(function() {
 	$("#btn").click(function() {
 		var startDay = $("input[name='startDay']").val();
 		var endDay = $("input[name='endDay']").val();
-
+		//날짜 예외처리 , 값이 없을때 예외처리
+		if(startDay>endDay){
+			alert('날짜를 다시 선택해주세요');
+		}else{
 		$.ajax({
 			url: "/category",
 			contentType: "application/json;charset=utf-8",
@@ -106,8 +107,7 @@ $(function() {
 			type: "get",
 			data: {
 				startDay: startDay,
-				endDay: endDay,
-				stNo : '1001'
+				endDay: endDay
 			},
 			success: function(cdata) {
 				google.charts.load('current', { 'packages': ['corechart'] });
@@ -185,5 +185,6 @@ $(function() {
 				alert("Error");
 			}
 		});
+		}
 	});
 });         
