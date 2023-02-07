@@ -12,7 +12,8 @@ $(function(){
 			type: "get",
 			data: {
 				startDay: '2020-03-01',
-				endDay: '2020-03-01'
+				endDay: '2020-03-01',
+				stNo : '1001'
 			},
 			success: function(cdata) {
 				google.charts.load('current', { 'packages': ['corechart'] });
@@ -105,7 +106,8 @@ $(function() {
 			type: "get",
 			data: {
 				startDay: startDay,
-				endDay: endDay
+				endDay: endDay,
+				stNo : '1001'
 			},
 			success: function(cdata) {
 				google.charts.load('current', { 'packages': ['corechart'] });

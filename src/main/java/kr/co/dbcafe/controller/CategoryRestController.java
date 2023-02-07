@@ -5,17 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.dbcafe.service.CategoryService;
 import kr.co.dbcafe.vo.CategoryDTO;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 public class CategoryRestController {
 
@@ -27,10 +23,12 @@ public class CategoryRestController {
 	@GetMapping("/category")
 	public List<CategoryDTO> categorySelectSum(@RequestParam(value="startDay") String s,
 											   @RequestParam(value="endDay" ) String e,
-											   Model model ){
-		Map<String, Object> map = new HashMap<>();
+											   @RequestParam(value="stNo" ) String stNo
+											   ){
+		Map<String, Object> map = new HashMap<>(); 
 		map.put("startDay", s);
 		map.put("endDay", e);
+		map.put("stNo", "1001");
 		List<CategoryDTO> list = categoryService.categorySum(map);
 		return list;
 	}
