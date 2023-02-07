@@ -155,7 +155,11 @@ $(function() {
 				}	
 			},
 			error: function(cdata) {
+				if(cdata.goalMonth==null){
+					alert('데이터가 없습니다.')
+				}else{
 				alert("Error");
+				}
 			}
 		});
 	});
