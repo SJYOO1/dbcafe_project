@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CategoryController {
 
 	// 폼을 띄운다.
-	@GetMapping(value = {"/categoryDate"})
+	@GetMapping(value = {"/categoryDate.html","/categoryDate"})
 	public String index(Model model){
 		return "categoryDate";
 	}
+	
 }
