@@ -39,7 +39,7 @@
 			<when test="start.length() == 4"> 
 			<![CDATA[ 
 			to_char(o.ORDDT , 'YYYY') >= #{start} 
-			AND to_char(o.ORDDT 'YYYY') <= #{end} 
+			AND to_char(o.ORDDT, 'YYYY') <= #{end} 
 			]]>
 			</when>
 		</choose>

@@ -38,7 +38,7 @@ public class OrderController {
 	// 날짜별 조회
 	@GetMapping("/udate")
 	public List<OrderResultVO> selectSalesByDate(@RequestParam("s") String s, @RequestParam("e") String e,
-			@RequestParam(value = "st") List<String> st) {
+			@RequestParam(value = "st[]") List<String> st) {
 		List<OrderResultVO> stNm = new ArrayList<>();
 		Map<String, Object> map = new HashMap<>();
 		map.put("start", s);

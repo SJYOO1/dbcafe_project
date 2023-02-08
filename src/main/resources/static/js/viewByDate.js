@@ -14,7 +14,7 @@ $(function() {
 					alert('날짜를 다시 선택해주세요');
 				} else {
 					$.ajax({
-						url: "./period/utime",
+						url: "./period/udate",
 						type: 'GET',
 						data: {
 							s: startDay,
