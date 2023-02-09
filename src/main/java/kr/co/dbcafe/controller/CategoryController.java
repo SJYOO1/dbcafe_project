@@ -13,4 +13,9 @@ public class CategoryController {
 		return "categoryDate";
 	}
 	
+	@GetMapping(value = {"/login"})
+	public String login(Model model){
+		return "login";
+	}
+	
 }
