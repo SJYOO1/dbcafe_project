@@ -10,24 +10,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-	@GetMapping(value = { "/", "/index", "/home" })
+	@GetMapping(value = { "/", "/index", "/index.html" })
 	public String index(Model model) {
 		model.addAttribute("serverTime",
 				LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")));
 		return "index";
 	}
 
-	@GetMapping(value = { "/index2", "/home2" })
+	@GetMapping(value = { "/term.html","/term" })
 	public String index2(Model model) {
 		model.addAttribute("serverTime",
 				LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")));
-		return "index2";
+		return "term";
 	}
-
-	@GetMapping(value = { "/index3", "/home3" })
+	@GetMapping(value = { "/index2" })
 	public String index3(Model model) {
 		model.addAttribute("serverTime",
 				LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")));
-		return "index3";
+		return "common";
 	}
 }
