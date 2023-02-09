@@ -25,8 +25,6 @@ public class GoalController {
 			 							HttpSession session
 										) {
 		String accountStNo = (String)session.getAttribute("stNo");
-		// 아래거 지워야함
-		accountStNo = "1001";
 		Map<String, Object> map = new HashMap<>();
 		map.put("currentYm", s);
 		map.put("accountStNo", accountStNo);
@@ -40,8 +38,6 @@ public class GoalController {
 									) {
 		
 		String accountStNo = (String)session.getAttribute("stNo");
-		// 아래거 지워야함
-		accountStNo = "1001";
 		Map<String, Object> map = new HashMap<>();
 		map.put("currentYy", s);
 		map.put("accountStNo", accountStNo);

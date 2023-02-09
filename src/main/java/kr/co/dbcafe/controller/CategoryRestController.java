@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.dbcafe.service.CategoryService;
 import kr.co.dbcafe.vo.CategoryDTO;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 public class CategoryRestController {
 
@@ -28,12 +30,11 @@ public class CategoryRestController {
 											   HttpSession session
 											   ){
 		String stNo = (String)session.getAttribute("stNo");
-		// 아래거 지워야함
-		stNo = "1001";
 		Map<String, Object> map = new HashMap<>();
 		map.put("startDay", s);
 		map.put("endDay", e);
 		map.put("stNo", stNo);
+		log.info(stNo);
 		List<CategoryDTO> list = categoryService.categorySum(map);
 		return list;
 	}
