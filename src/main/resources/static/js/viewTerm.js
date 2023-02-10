@@ -80,9 +80,9 @@ $(function() {
 
 						var chart = new google.visualization.ColumnChart(
 							document
-								.getElementById('chartByTime'));
+								.getElementById('chartView'));
 						chart.draw(dataTable, options);
-						var table = new google.visualization.Table(document.getElementById('tableByTime'));
+						var table = new google.visualization.Table(document.getElementById('tableView'));
 						table.draw(dataTable, {showRowNumber: true, width: '100%', height: '100%','backgroundColor' : 'none'});
 					}
 				},
@@ -173,9 +173,9 @@ $(function() {
 
 						var chart = new google.visualization.ColumnChart(
 							document
-								.getElementById('chartByTime'));
+								.getElementById('chartView'));
 						chart.draw(dataTable, options);
-						var table = new google.visualization.Table(document.getElementById('tableByTime'));
+						var table = new google.visualization.Table(document.getElementById('tableView'));
 						table.draw(dataTable, {showRowNumber: true, width: '100%', height: '100%'});
 					}
 				},

@@ -32,20 +32,39 @@
 
 	<section class="home">
 		<div class="text">기간별 매출 조회 · 분석</div>
-		<div class="viewCondition">
-			조회타입 :
-			<input type="radio" id="normalView" name="viewRadioBtn" value="normalView">
-			일반조회
-			<input type="radio" id="compareView" name="viewRadioBtn" value="compareView">
-			비교조회
-		</div>
-		<div class="viewSelect"></div>
-		<div class="selectDate"></div>
-		<div class="selectStore"></div>
-		<div class="viewButton"></div>
+		<fieldset>
+			<legend>조회조건설정</legend>
+			<div class="viewSelect">
+				조회분류 : <select name="selectBox" id="selectBox" onchange="handleOnChange(this)">
+					<option value="">선택하세요</option>
+					<option id="byTime" value="byTime">시간별조회</option>
+					<option id="byDay" value="byDay">일별조회</option>
+					<option id="byMonth" value="byMonth">월별조회</option>
+					<option id="byYear" value="byYear">연별조회</option>
+				</select>
+			</div>
+			<div class="selectDate">
+				<span>조회기간 : </span>
+				<input type="text" id="startDate" name="startDate" placeholder="" value="" />
+				~
+				<input type="text" id="endDate" name="endDate" value="" />
+			</div>
+			<div class="selectStore">
+				<span>조회매장 : </span>
+				<input type="checkbox" id="stNo1001" name="stNo" value="1001">
+				여의도
+				<input type="checkbox" id="stNo2001" name="stNo" value="2001">
+				수원
+				<input type="checkbox" id="stNo2002" name="stNo" value="2002">
+				용인
+			</div>
+			<div class="viewButton">
+				<button id="" name="viewBtn">조회</button>
+			</div>
+		</fieldset>
 		<div class="graph">
-			<div id="chartByTime" class="chart-box" style="width: 1000px;"></div>
-			<div id="tableByTime" class="chart-box" style="width: 1000px;"></div>
+			<div id="chartView" class="chart-box" style="width: 1000px;"></div>
+			<div id="tableView" class="chart-box" style="width: 1000px;"></div>
 		</div>
 
 

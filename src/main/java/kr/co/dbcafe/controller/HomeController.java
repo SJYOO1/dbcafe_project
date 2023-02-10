@@ -23,10 +23,4 @@ public class HomeController {
 				LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")));
 		return "term";
 	}
-	@GetMapping(value = { "/index2" })
-	public String index3(Model model) {
-		model.addAttribute("serverTime",
-				LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")));
-		return "common";
-	}
 }
