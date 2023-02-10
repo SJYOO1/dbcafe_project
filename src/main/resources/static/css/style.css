@@ -316,7 +316,7 @@ body.dark .sidebar li a:hover .text {
     position : absolute;
     top : 30px;
     left : 80px;
-    font-size : 30pt;
+    font-size : 28pt;
     color : var(--text-color);
     font-weight : 700;
 }

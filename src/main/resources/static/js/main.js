@@ -1,9 +1,12 @@
+
 $(function(){
 	var today = new Date();
 	var year = today.getFullYear();
 	var month = ('0' + (today.getMonth() + 1)).slice(-2);
 	var currentYm = year + '-' + month;
 	var currentYy = year;
+	var date = year + "년 " + month + "월 매출액";
+	$('.goalYmtitle').append(date);
 	$.ajax({
 			url: "/month",
 			contentType: "application/json;charset=utf-8",
@@ -120,6 +123,10 @@ $(function() {
 				currentYm: currentYm
 			},
 			success: function(cdata) {
+				var value = $('#goalDate').val();
+				var date = value.substr(0, 4) + "년 " + value.substr(5, 6) + "월 매출액";
+				$('.goalYmtitle').empty();
+				$('.goalYmtitle').append(date);
 				google.charts.load('current', { 'packages': ['corechart'] });
 				google.charts.setOnLoadCallback(getMonthGoal);
 				function getMonthGoal() {
