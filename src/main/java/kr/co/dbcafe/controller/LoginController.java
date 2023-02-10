@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import kr.co.dbcafe.service.LoginService;
 import kr.co.dbcafe.vo.LoginReqDTO;
 import kr.co.dbcafe.vo.StoreDTO;
-import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@Slf4j
 public class LoginController {
 
 	@Autowired
@@ -21,7 +19,6 @@ public class LoginController {
 
 	@PostMapping("/loginCheck")
 	public String login(@ModelAttribute LoginReqDTO loginReqDTO ,HttpSession httpSession) {
-		log.info("받은값 : {}", loginReqDTO);
 		boolean result = loginService.findById(loginReqDTO);
 		String result2 = "";
 		if (result == true) {
@@ -36,7 +33,8 @@ public class LoginController {
 		return result2;
 	}
 	@PostMapping("/logout")
-	public void logout(HttpSession session) {
+	public String logout(HttpSession session) {
 		session.invalidate();
+		return "login";
 		}
 }
