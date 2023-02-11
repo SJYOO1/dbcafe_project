@@ -28,7 +28,7 @@ body {
     min-height: 100vh;
     background-color: var(--body-color);
     transition: var(--tran-05);
-    overflow:hidden;
+   	overflow : hidden;
 }
 
 a {
@@ -306,63 +306,67 @@ body.dark .sidebar li a:hover .text {
 
 .home .graph .goalYm{
     position : absolute;
-    top : 100px;
+    top : 70px;
     left : 100px;
-    width : 600px;
+    width : 500px;
     height : 500px
 }
 
 .home .graph .goalYmtitle {
     position : absolute;
-    top : 50px;
-    left : 130px;
-    font-size : 30pt;
+    top : 30px;
+    left : 80px;
+    font-size : 28pt;
     color : var(--text-color);
     font-weight : 700;
 }
 
 .home .graph .goalYy {
     position : absolute;
-    top : 100px;
-    left : 750px;
-    width : 600px;
+    top : 70px;
+    left : 680px;
+    width : 500px;
     height : 500px
 }
 
 .home .graph .goalYytitle {
     position : absolute;
-    top : 50px;
-    left : 780px;
+    top : 30px;
+    left : 660px;
     font-size : 30pt;
     color : var(--text-color);
     font-weight : 700;
 }
-
-.home .graph #goalDate {
-    position : absolute;
-    top : 55px;
-    left : 490px;
-    font-size : 15pt;
+.home .dateSubmit {
+	margin-top : 50px;
+    margin-left : 80px;
+    font-size : 18pt;
     color : var(--text-color);
-
+    font-weight : 700;    
 }
+
 
 /* 품목별 매출 / 판매량 조회 */
 
-
-.home .graph .categoryAccount {
-    position : absolute;
-    top : 120px;
-    left : 100px;
+.home .position  {
+    padding-left : 60px;
+    font-weight : 700;
+    color : var(--text-color);
+    font-size : 20px;    
+}
+.home .graph .categoryAccount  {
+	position: absolute;
+	top : 60px;
+    left : 70px;
     width : 600px;
     height : 600px
 }
 
 .home .graph .categoryAccountTitle {
     position : absolute;
-    top : 115px;
-    left : 160px;
-    font-size : 25pt;
+    top : 50px;
+    left : 130px;
+    font-size : 22pt;
     color : var(--text-color);
     font-weight : 700;
 }
@@ -370,38 +374,20 @@ body.dark .sidebar li a:hover .text {
 
 .home .graph .categoryQuantity {
     position : absolute;
-    top : 120px;
-    left : 700px;
+    top : 60px;
+    left : 600px;
     width : 600px;
     height : 600px
 }
 
 .home .graph .categoryQuantityTitle {
     position : absolute;
-    top : 115px;
-    left : 740px;
-    font-size : 25pt;
+    top : 50px;
+    left : 670px;
+    font-size : 22pt;
     color : var(--text-color);
     font-weight : 700;
 }
-
-.home .categoryDate {
-    position : relative;
-}
-
-.home .categoryDate .position {
-    text-align: center;
-
-    font-size: 15pt;
-    color : var(--text-color);
-    font-weight : 700;
-}
-
-.home .graph .categoryName {
-    position : absolute;
-    left : 100px;
-}
-
 
 
 /* 주문/결제방식별 조회 */
@@ -457,8 +443,6 @@ body.dark .sidebar li a:hover .text {
     font-weight : 700;
 }
 
-
-
 /* 기간별 매출 조회 */
 
 
@@ -503,9 +487,6 @@ body.dark .sidebar li a:hover .text {
 	text-align : center;
     font-family: 'Poppins', sans-serif;
 }
-
-
-
 
 
 /* 메뉴 리스트업 */
@@ -562,7 +543,6 @@ body.dark .sidebar li a:hover .text {
     top : 680px;
     left : 1300px;
 }
-
 
 /* 다크모드 및 토글 스위치 */
 .mode .sun-moon i {
