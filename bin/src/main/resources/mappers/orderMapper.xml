@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.dbcafe.dao.OrderDAO">
+	<!-- namespace를 인터페이스 이름과 일치 시켜야 한다. -->
+	<!-- 아직 많은 수정이 필요합니다. -->
+	<select id="today" resultType="string">
+		select sysdate from dual
+	</select>
+
+	<select id="selectAll" resultType="OrdVO">
+		<![CDATA[select * from ord where ordNo<=100 order by ordNo]]>
+	</select>
+	<resultMap type="OrdVO" id="ordResultMap">
+		<id property="ordNo" column="ordNo" />
+		<result property="stNo" column="stNo" />
+		<result property="ordDt" column="ordDt" />
+		<result property="typeNo" column="typeNo" />
+		<result property="payNo" column="payNo" />
+		<collection property="detailVOs"
+			ofType="kr.co.dbcafe.vo.OrdVO$DetailVO">
+			<id property="detailNo" column="detailNo" />
+			<result property="ordNo" column="ordNo" />
+			<result property="gdNo" column="gdNo" />
+			<result property="ordQn" column="ordQn" />
+			<result property="totPrice" column="totPrice" />
+		</collection>
+	</resultMap>
+	<select id="selectDetail" resultMap="ordResultMap">
+		<![CDATA[select * from ord o,
+		detail d where o.ordNo<=10 and d.ordno = o.ordno order by o.ordNo]]>
+	</select>
+	<select id="selectDetailByOrdNo" parameterType="int" resultMap="ordResultMap">
+		<![CDATA[select * from ord o,
+		detail d where o.ordNo<=#{ordNo} and d.ordno = o.ordno order by o.ordNo]]>
+	</select>
+
+	<!-- 일반조회 : 시간대별-일별 조회 -->
+	<select id="selectTimelyDaily" resultType="hashmap">
+	<![CDATA[
+		SELECT
+		sum(d.TOTPRICE),
+		to_char(o2.ORDDT , 'hh24')
+		FROM
+		DETAIL d,
+		ORD o2
+		WHERE
+		d.ORDNO IN (
+		SELECT
+		o.ORDNO
+		FROM
+		ORD o
+		WHERE
+		to_char(o.ORDDT , 'YYYYMMDD') >= #{startDay}
+		AND to_char(o.ORDDT , 'YYYYMMDD') <= #{endDay}
+		AND o.STNO IN (#{stNo1},#{stNo2},#{stNo3},#{stNo4}) )
+		AND D.ORDNO = O2.ORDNO
+		GROUP BY
+		to_char(o2.ORDDT , 'hh24')
+		ORDER BY
+		to_char(o2.ORDDT , 'hh24') ;
+		]]>
+	</select>
+
+	<!-- 일반조회 : 시간대별-월별 조회 -->
+	<select id="selectTimelyMonthly" resultType="hashmap">
+	<![CDATA[
+		SELECT
+		sum(d.TOTPRICE),
+		to_char(o2.ORDDT , 'hh24')
+		FROM
+		DETAIL d,
+		ORD o2
+		WHERE
+		d.ORDNO IN (
+		SELECT
+		o.ORDNO
+		FROM
+		ORD o
+		WHERE
+		to_char(o.ORDDT , 'YYYYMM') >= #{startMonth}
+		AND to_char(o.ORDDT , 'YYYYMM') <= #{endMonth}
+		AND o.STNO IN (#{stNo1},#{stNo2},#{stNo3},#{stNo4}) )
+		AND D.ORDNO = O2.ORDNO
+		GROUP BY
+		to_char(o2.ORDDT , 'hh24')
+		ORDER BY
+		to_char(o2.ORDDT , 'hh24') ;
+	]]>
+	</select>
+
+	<!-- 일반조회 : 시간대별-연별 조회 -->
+	<select id="selectTimelyYearly" resultType="hashmap">
+	<![CDATA[
+		SELECT
+		sum(d.TOTPRICE),
+		to_char(o2.ORDDT , 'hh24')
+		FROM
+		DETAIL d,
+		ORD o2
+		WHERE
+		d.ORDNO IN (
+		SELECT
+		o.ORDNO
+		FROM
+		ORD o
+		WHERE
+		to_char(o.ORDDT , 'YYYY') >= #{startYear}
+		AND to_char(o.ORDDT , 'YYYY') <= #{endYear}
+		AND o.STNO IN (#{stNo1},#{stNo2},#{stNo3},#{stNo4}) )
+		AND D.ORDNO = O2.ORDNO
+		GROUP BY
+		to_char(o2.ORDDT , 'hh24')
+		ORDER BY
+		to_char(o2.ORDDT , 'hh24') ;
+	]]>
+	</select>
+
+	<!-- 일반조회 : 일별 조회 -->
+	<select id="selectDaily" resultType="hashmap">
+	<![CDATA[
+		SELECT
+		sum(d.TOTPRICE),
+		to_char(o2.ORDDT , 'YYYYMMDD')
+		FROM
+		DETAIL d,
+		ORD o2
+		WHERE
+		d.ORDNO IN (
+		SELECT
+		o.ORDNO
+		FROM
+		ORD o
+		WHERE
+		to_char(ORDDT , 'YYYYMMDD') >= #{startDay}
+		AND to_char(ORDDT , 'YYYYMMDD') <= #{endDay}
+		AND STNO IN (#{stNo1},#{stNo2},#{stNo3},#{stNo4}) )
+		AND D.ORDNO = O2.ORDNO
+		GROUP BY
+		to_char(o2.ORDDT , 'YYYYMMDD')
+		ORDER BY
+		to_char(o2.ORDDT , 'YYYYMMDD') ;
+	]]>
+	</select>
+
+	<!-- 일반조회 : 월별 조회 -->
+	<select id="selectMonthly" resultType="hashmap">
+	<![CDATA[
+		SELECT
+		sum(d.TOTPRICE),
+		to_char(o2.ORDDT , 'YYYYMM')
+		FROM
+		DETAIL d,
+		ORD o2
+		WHERE
+		d.ORDNO IN (
+		SELECT
+		o.ORDNO
+		FROM
+		ORD o
+		WHERE
+		to_char(ORDDT , 'YYYYMM') >= #{startMonth}
+		AND to_char(ORDDT , 'YYYYMM') <= #{endMonth}
+		AND STNO IN (#{stNo1},#{stNo2},#{stNo3},#{stNo4}) )
+		AND D.ORDNO = O2.ORDNO
+		GROUP BY
+		to_char(o2.ORDDT , 'YYYYMM')
+		ORDER BY
+		to_char(o2.ORDDT , 'YYYYMM') ;
+	]]>
+	</select>
+
+	<!-- 일반조회 : 연별 조회 -->
+	<select id="selectYearly" resultType="hashmap">
+	<![CDATA[
+		SELECT
+		sum(d.TOTPRICE),
+		to_char(o2.ORDDT , 'YYYY')
+		FROM
+		DETAIL d,
+		ORD o2
+		WHERE
+		d.ORDNO IN (
+		SELECT
+		o.ORDNO
+		FROM
+		ORD o
+		WHERE
+		to_char(ORDDT , 'YYYY') >= #{startYear}
+		AND to_char(ORDDT , 'YYYY') <= #{endYear}
+		AND STNO IN (#{stNo1},#{stNo2},#{stNo3},#{stNo4}) )
+		AND D.ORDNO = O2.ORDNO
+		GROUP BY
+		to_char(o2.ORDDT , 'YYYY')
+		ORDER BY
+		to_char(o2.ORDDT , 'YYYY') ;
+	]]>
+	</select>
+
+
+
+</mapper>
