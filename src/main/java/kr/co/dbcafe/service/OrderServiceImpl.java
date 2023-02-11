@@ -2,8 +2,6 @@ package kr.co.dbcafe.service;
 
 import java.sql.SQLException;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -76,7 +74,6 @@ public class OrderServiceImpl implements OrderService {
 				dto.setSumByTimes(orderDAO.sumByUnitDate(map));
 				stNm.add(dto);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
