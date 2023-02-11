@@ -73,7 +73,7 @@ $(function() {
 								title: 'Time of Days'
 							},
 							vAxis: {
-								title: '시간대별 매출액 (원)'
+								title: '매출액 (원)'
 							},
 							'backgroundColor' : 'none'
 						};
@@ -167,7 +167,7 @@ $(function() {
 								title: 'Time of Days'
 							},
 							vAxis: {
-								title: '시간대별 매출액 (원)'
+								title: '매출액 (원)'
 							}
 						};
 
