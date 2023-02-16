@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.co.dbcafe.dao.MenuYnDAO">
+	<select id="menuList" resultType="MenuYnResDTO" parameterType="String">
+		SELECT m.gdyn,m.gdno,m.stno,g.GDNM ,g.PRICE ,g.CATNO
+		FROM MENUYN m, GOODS g
+		WHERE m.gdno=g.gdNO AND m.stno=#{stNo}
+	</select>
+	<update id="updateMenuYn" parameterType="MenuYnUpdateReqDTO">
+		UPDATE MENUYN SET gdYn=#{gdYn}
+		WHERE stNo=#{stNo} AND gdNo=#{gdNo}
+	</update>
+</mapper>

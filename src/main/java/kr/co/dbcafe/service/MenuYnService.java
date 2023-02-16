@@ -11,5 +11,5 @@ public interface MenuYnService {
 	List<MenuYnResDTO> menuList(String stNo);
 	
 	// 사용 여부 수정
-	void updateMenuYn(MenuYnUpdateReqDTO menuYnUpdateReqDTO);
+	void updateMenuYn(String stNo, MenuYnUpdateReqDTO menuYnUpdateReqDTO);
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import kr.co.dbcafe.dao.MenuYnDAO;
 import kr.co.dbcafe.vo.MenuYnResDTO;
@@ -28,8 +27,9 @@ public class MenuYnServiceImpl implements MenuYnService {
 	}
 
 	@Override
-	public void updateMenuYn(@RequestBody MenuYnUpdateReqDTO menuYnUpdateReqDTO) {
+	public void updateMenuYn(String stNo, MenuYnUpdateReqDTO menuYnUpdateReqDTO) {
 		try {
+			menuYnUpdateReqDTO.setStNo(stNo);
 			menuYnDAO.updateMenuYn(menuYnUpdateReqDTO);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.co.dbcafe.dao.LoginDAO">
+	<select id="findById" parameterType="String" resultType="AccountDTO">
+		SELECT id, password, stNo FROM ACCOUNT a WHERE id=#{id}
+	</select>
+	<select id="findStNm" resultType="StoreDTO" parameterType="String">
+		SELECT s.*  FROM ACCOUNT a, STORE s WHERE a.STNO =s.STNO AND a.ID =#{id}
+	</select>
+</mapper>
