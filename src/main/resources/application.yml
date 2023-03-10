@@ -15,10 +15,10 @@ spring:
     cache: false
     template-resolver-order: 0
   datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@127.0.0.1:1521/xe
     username: javauser
     password: 123456
 mybatis:
   type-aliases-package: kr.co.dbcafe.vo
-  mapper-locations: classpath:mappers/*.xml
+  mapper-locations: classpath:mappers/**/*.xml
