@@ -28,7 +28,7 @@ body {
     min-height: 100vh;
     background-color: var(--body-color);
     transition: var(--tran-05);
-   	overflow : hidden;
+    overflow:hidden;
 }
 
 a {
@@ -345,7 +345,6 @@ body.dark .sidebar li a:hover .text {
     font-weight : 700;    
 }
 
-
 /* 품목별 매출 / 판매량 조회 */
 
 .home .position  {
@@ -388,6 +387,7 @@ body.dark .sidebar li a:hover .text {
     color : var(--text-color);
     font-weight : 700;
 }
+
 
 
 /* 주문/결제방식별 조회 */
@@ -488,64 +488,160 @@ body.dark .sidebar li a:hover .text {
     font-family: 'Poppins', sans-serif;
 }
 
-
-
-
-
 /* 메뉴 리스트업 */
 
+
+
 .home .categoryCoffee {
-    width : 400px;
+    width : 30%;
     height : 800px;
     position : absolute;
-    left : 50px;
+    left : 3%;
+    border : none;
+    border-radius: 10px;
+    border-collapse: collapse;
 }
 
 .home .categoryBeverage {
-    width : 400px;
+    width : 30%;
     height : 800px;
     position : absolute;
-    left : 500px;
+    border : none;
+    border-radius: 10px;
+    border-collapse: collapse;
+    left : 35%;
 }
 
 .home .categoryDesert {
-    width : 400px;
+    width : 30%;
     height : 800px;
     position : absolute;
-    left : 950px;
+    left : 67%;
+    border : none;
+    border-radius: 10px;
+    border-collapse: collapse;
 }
 
 .home .bigCategoryTitle {
     text-align : center;
     font-size: 25pt;
-    margin : auto;
+    margin-bottom : 10px;
+    width : 100%;
+    height : 50px;
     font-family: 'Poppins', sans-serif;
-    color :  #bfe3ed;
-    border-radius: 10px 10px 10px 10px;
-    border : 1px solid #7758b3;
-    background-color: #7758b3;
+    border-radius: 10px 30px 10px 30px;
+    border : 1px solid none;
+    color :  #FFE7BD;
+    background-color: #B36F50;
+    
+    font-weight : 700;
 }   
 
 .home .sCategoryTitle {
     text-align : center;
-    font-size: 15pt;
+    font-size: 20pt;
     margin : auto;
-    font-family: 'Poppins', sans-serif;
-    color :  #bfe3ed;
-    border-radius: 10px 10px 10px 10px;
-    border : 1px solid #7758b3;
-    background-color: #7758b3;
+    font-family: 'Poppins', sans-serif; 
+    border-radius: 10px 30px 10px 30px;
+    color :  #8B4513;;
+    background-color: #D2B48C;
+    margin-top : 10px;
+    font-weight : 600;
+
 }
 
-.home .table {
+#thStyle { 
+    width : 120px;
+    height : 50px;
+    font-size : 14pt;
     text-align : center;
+    color :  #8B4513;;
+    background-color: #B36F50;
+    font-weight : 700;    
 }
 
-.home .saveBtn {
-    position : absolute;
-    top : 680px;
-    left : 1300px;
+#tdStyle { 
+    width : 150px;
+    height : 50px;
+    font-size : 11pt;
+    text-align : center;
+    margin-top : 10px;
+    color :   	#8B4513;
+    border-radius: 30px;
+    font-weight : 600;
+    border-top : 2px solid var(--text-color);
+}   
+
+#toggleStyle {
+    border-top: 2px solid var(--text-color);
 }
+
+
+
+/* 메뉴 토글 스위치 */
+
+.toggleSwitch {
+    width: 80px;
+    height: 40px;
+    display: block;
+    position: relative;
+    border-radius: 30px;
+    background-color: green;
+    box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+    cursor: pointer;
+    color : green;
+    margin-top : 10px;
+    margin-bottom : 10px;
+    left : 20px;
+  }
+  
+  .toggleSwitch .toggleButton {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 55%;
+    left: 2px;
+    transform: translateY(-57%);
+    border-radius: 50%;
+    background: white;
+  }
+  
+  .toggleSwitch.active {
+    background: #f03d3d;
+    color : red;
+  }
+  
+  .toggleSwitch.active .toggleButton {
+    left: calc(100% - 35px);
+    background: #fff;
+  }
+  
+  .toggleSwitch, .toggleButton {
+    transition: all 0.1s ease-in;
+  }
+  
+  p {
+    position : absolute;
+    font-size : 10pt;
+    left : 5px;
+    bottom : -10px;
+    font-weight: bold;
+  }
+  
+  p .active {
+    position : absolute;
+    font-size : 14pt;  
+    font-weight: bold;
+  }
+  
+  p .disable {
+    position : absolute;
+    font-size : 14pt;
+    font-weight: bold;
+    color : red;
+    display : block;
+  }
+
 
 /* 다크모드 및 토글 스위치 */
 .mode .sun-moon i {
