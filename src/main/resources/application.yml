@@ -15,9 +15,9 @@ spring:
     cache: false
     template-resolver-order: 0
   datasource:
-    driver-class-name: oracle.jdbc.driver.OracleDriver
+    driver-class-name: oracle.jdbc.OracleDriver
     url: jdbc:oracle:thin:@127.0.0.1:1521/xe
-    username: javauser
+    username: cafe_user
     password: 123456
 mybatis:
   type-aliases-package: kr.co.dbcafe.vo

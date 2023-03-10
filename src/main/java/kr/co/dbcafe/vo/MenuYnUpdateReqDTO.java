@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MenuYnUpdateReqDTO {
+	private String stNo;
 	private String gdYn;
 	private String gdNo;
-	private String stNo;
 }
