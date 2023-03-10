@@ -2,354 +2,351 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ======== CSS ======== -->
-    <link rel="stylesheet" href="css/style.css">
+<!-- ======== CSS ======== -->
+<link rel="stylesheet" href="css/style.css">
 
-    <!-- ===== Boxicons CSS ===== -->
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    
-    <!-- ===== BootStrap ======  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
+<!-- ===== Boxicons CSS ===== -->
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
+<!-- ===== BootStrap ======  -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://unpkg.com/jquery@3.6.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script src="js/menu.js" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://unpkg.com/jquery@3.6.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 
-    <title> Cafe Account Management System ☆★☆★</title>
+<script src="js/menu.js" defer></script>
+
+<title>Cafe Account Management System ☆★☆★</title>
 </head>
 
-    <!-- sidebar -->
-    <nav th:replace="/common.html :: sidebarFragment"> </nav>
-         
-      <section class="home" style="overflow-y : scroll;">
-        <div class="text"> 메뉴 관리 </div>
-        <div class="categoryCoffee">
-            <div class="bigCategoryTitle"> 커피</div>        
-            <div class="sCategoryTitle">커피
-            <table>
-                <thead>
-                    <tr>
-                        <th id="thStyle" style="width:180px"> 메뉴  </th>
-                        <th id="thStyle" style="width:100px;">  가격  </th>
-                        <th id="thStyle">  사용여부  </th>
-                    </tr>                
-                </thead>
-                <tbody class="menuList">
-                  <tr th:each="list : ${menuList}" th:if="${list.catNo} == 'CAF'" id="trStyle">
-                      <td th:text="${list.gdNm}" id="tdStyle"> 아메리카노 </td>
-                      <td th:text=" ${list.price}+원" id="tdStyle"> 3500 </td>
-                      
-                      <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-                        <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                              <span class="toggleButton">
-                                <p id="onBtn" style="display:block">ON</p>
-                                <p id="offBtn" style="display:none">OFF</p>
-                              </span>
-                          </label></td>
-                  </tr>
-                
-                  
-            </table>
-            </div>
+<!-- sidebar -->
+<nav th:replace="/common.html :: sidebarFragment"></nav>
 
-            <div class="sCategoryTitle">브루드 커피
-            <table>
-              <thead>
-                  <tr>
-                      <th id="thStyle" style="width:200px"> 메뉴  </th>
-                      <th id="thStyle" style="width:80px;">  가격  </th>
-                      <th id="thStyle">  사용여부  </th>
-                  </tr>                
-              </thead>
-              <tbody class="menuList">
-                <tr th:each="list : ${menuList}" th:if="${list.catNo} == 'BCF'" id="trStyle">
-                    <td th:text="${list.gdNm}" id="tdStyle"> 콜드브루 아메리카노 </td>
-                    <td th:text=" ${list.price}+원" id="tdStyle"> 3500 </td>
-                    
-                    <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-                      <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                            <span class="toggleButton">
-                              <p id="onBtn" style="display:block">ON</p>
-                              <p id="offBtn" style="display:none">OFF</p>
-                            </span>
-                        </label></td>
-                </tr>
-          </table>
-        </div>
-        </div>
-    
-        <div class="categoryBeverage">        
-          <div class="bigCategoryTitle"> 음료 </div> 
-            <div class="sCategoryTitle">에이드
-            <table>
-              <thead>
-                  <tr>
-                      <th id="thStyle" style="width:180px"> 메뉴  </th>
-                      <th id="thStyle" style="width:100px;">  가격  </th>
-                      <th id="thStyle">  사용여부  </th>
-                  </tr>                
-              </thead>
-              <tbody class="menuList">
-                <tr th:each="list : ${menuList}" th:if="${list.catNo} == 'ADE'" id="trStyle">
-                    <td th:text="${list.gdNm}" id="tdStyle"> 레몬 에이드 </td>
-                    <td th:text=" ${list.price}+원" id="tdStyle"> 5500 </td>
-                    
-                    <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-                      <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                            <span class="toggleButton">
-                              <p id="onBtn" style="display:block">ON</p>
-                              <p id="offBtn" style="display:none">OFF</p>
-                            </span>
-                        </label></td>
-                </tr>
-          </table>
-          </div>
-    
-          <div class="sCategoryTitle"> 착즙주스(병음료)
-          <table>
-            <thead>
-                <tr>
-                    <th id="thStyle" style="width:180px"> 메뉴 </th>
-                    <th id="thStyle" style="width:100px;">  가격  </th>
-                    <th id="thStyle">  사용여부  </th>
-                </tr>                
-            </thead>
-            <tbody class="menuList">
-              <tr th:each="list : ${menuList}" th:if="${list.catNo} == 'BTD'" id="trStyle">
-                  <td th:text="${list.gdNm}" id="tdStyle">오렌지주스 </td>
-                  <td th:text=" ${list.price}+원" id="tdStyle"> 5500 </td>
-                  
-                  <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-                    <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                          <span class="toggleButton">
-                            <p id="onBtn" style="display:block">ON</p>
-                            <p id="offBtn" style="display:none">OFF</p>
-                          </span>
-                      </label></td>
-              </tr>
-        </table>
-        </div>
+<section class="home" style="overflow-y: scroll;">
+	<div class="text">메뉴 관리</div>
+	<div class="categoryCoffee">
+		<div class="bigCategoryTitle">커피</div>
+		<div class="sCategoryTitle">
+			커피
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}" th:if="${list.catNo} == 'CAF'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">아메리카노</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">3500</td>
 
-        <div class="sCategoryTitle"> 티(TEA)
-        <table>
-          <thead>
-              <tr>
-                  <th id="thStyle" style="width:180px"> 메뉴 </th>
-                  <th id="thStyle" style="width:100px;">  가격  </th>
-                  <th id="thStyle">  사용여부  </th>
-              </tr>                
-          </thead>
-          <tbody class="menuList">
-            <tr th:each="list : ${menuList}  " th:if="${list.catNo} == 'TEA'" id="trStyle">
-                <td th:text="${list.gdNm}" id="tdStyle"> 그린티 </td>
-                <td th:text=" ${list.price}+원" id="tdStyle"> 5500 </td>
-                
-                <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-                  <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                        <span class="toggleButton">
-                          <p id="onBtn" style="display:block">ON</p>
-                          <p id="offBtn" style="display:none">OFF</p>
-                        </span>
-                    </label></td>
-            </tr>
-      </table>
-      </div>
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle">
+						<label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> 
+							<span class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+		<div class="sCategoryTitle">
+			브루드 커피
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 200px">메뉴</th>
+						<th id="thStyle" style="width: 80px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}" th:if="${list.catNo} == 'BCF'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">콜드브루 아메리카노</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">3500</td>
 
-      <div class="sCategoryTitle"> 버블티
-      <table>
-        <thead>
-            <tr>
-                <th id="thStyle" style="width:180px"> 메뉴 </th>
-                <th id="thStyle" style="width:100px;">  가격  </th>
-                <th id="thStyle">  사용여부  </th>
-            </tr>                
-        </thead>
-        <tbody class="menuList">
-          <tr th:each="list : ${menuList}  " th:if="${list.catNo} == 'BBT'" id="trStyle">
-              <td th:text="${list.gdNm}" id="tdStyle">흑당버블티 </td>
-              <td th:text=" ${list.price}+원" id="tdStyle"> 5500 </td>
-              
-              <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-                <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                      <span class="toggleButton">
-                        <p id="onBtn" style="display:block">ON</p>
-                        <p id="offBtn" style="display:none">OFF</p>
-                      </span>
-                  </label></td>
-          </tr>
-    </table>
-    </div>
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+	</div>
+	<div class="categoryBeverage">
+		<div class="bigCategoryTitle">음료</div>
+		<div class="sCategoryTitle">
+			에이드
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}" th:if="${list.catNo} == 'ADE'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">레몬 에이드</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">5500</td>
 
-    <div class="sCategoryTitle"> 쉐이크
-    <table>
-      <thead>
-          <tr>
-              <th id="thStyle" style="width:180px"> 메뉴 </th>
-              <th id="thStyle" style="width:100px;">  가격  </th>
-              <th id="thStyle">  사용여부  </th>
-          </tr>                
-      </thead>
-      <tbody class="menuList">
-        <tr th:each="list : ${menuList}  " th:if="${list.catNo} == 'SHK'" id="trStyle">
-            <td th:text="${list.gdNm}" id="tdStyle"> 바닐라쉐이크 </td>
-            <td th:text=" ${list.price}+원" id="tdStyle"> 5500 </td>
-            
-            <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-              <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                    <span class="toggleButton">
-                      <p id="onBtn" style="display:block">ON</p>
-                      <p id="offBtn" style="display:none">OFF</p>
-                    </span>
-                </label></td>
-        </tr>
-    </table>
-    </div>
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+		<div class="sCategoryTitle">
+			착즙주스(병음료)
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}" th:if="${list.catNo} == 'BTD'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">오렌지주스</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">5500</td>
 
-    <div class="sCategoryTitle"> 스무디 
-    <table>
-      <thead>
-          <tr>
-              <th id="thStyle" style="width:180px"> 메뉴 </th>
-              <th id="thStyle" style="width:100px;">  가격  </th>
-              <th id="thStyle">  사용여부  </th>
-          </tr>                
-      </thead>
-      <tbody class="menuList">
-        <tr th:each="list : ${menuList}  " th:if="${list.catNo} == 'SMT'" id="trStyle">
-            <td th:text="${list.gdNm}" id="tdStyle"> 망고스무디 </td>
-            <td th:text=" ${list.price}+원" id="tdStyle"> 5500 </td>
-            
-            <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-              <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                    <span class="toggleButton">
-                      <p id="onBtn" style="display:block">ON</p>
-                      <p id="offBtn" style="display:none">OFF</p>
-                    </span>
-                </label></td>
-        </tr>
-    </table>
-    </div>
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+		<div class="sCategoryTitle">
+			티(TEA)
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}  " th:if="${list.catNo} == 'TEA'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">그린티</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">5500</td>
 
-       </div>
-       
-    
-       <div class="categoryDesert">
-        <div class="bigCategoryTitle"> 디저트 </div>        
-        <div class="sCategoryTitle"> 케이크 
-        <table>
-            <thead>
-                <tr>
-                    <th id="thStyle" style="width:180px"> 메뉴  </th>
-                    <th id="thStyle" style="width:100px;">  가격  </th>
-                    <th id="thStyle">  사용여부  </th>
-                </tr>                
-            </thead>
-            <tbody class="menuList">
-              <tr th:each="list : ${menuList}" th:if="${list.catNo} == 'CAK'" id="trStyle">
-                  <td th:text="${list.gdNm}" id="tdStyle"> 고구마 케이크 </td>
-                  <td th:text=" ${list.price}+원" id="tdStyle"> 35000 </td>
-                  
-                  <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-                    <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                          <span class="toggleButton">
-                            <p id="onBtn" style="display:block">ON</p>
-                            <p id="offBtn" style="display:none">OFF</p>
-                          </span>
-                      </label></td>
-              </tr>
-        </table>
-        </div>
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+		<div class="sCategoryTitle">
+			버블티
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}  " th:if="${list.catNo} == 'BBT'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">흑당버블티</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">5500</td>
 
-        <div class="sCategoryTitle"> 머핀 
-        <table>
-          <thead>
-              <tr>
-                  <th id="thStyle" style="width:180px"> 메뉴  </th>
-                  <th id="thStyle" style="width:100px;">  가격  </th>
-                  <th id="thStyle">  사용여부  </th>
-              </tr>                
-          </thead>
-          <tbody class="menuList">
-            <tr th:each="list : ${menuList}" th:if="${list.catNo} == 'MUF'" id="trStyle">
-                <td th:text="${list.gdNm}" id="tdStyle"> 초코 머핀 </td>
-                <td th:text=" ${list.price}+원" id="tdStyle"> 3500 </td>
-                
-                <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-                  <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                        <span class="toggleButton">
-                          <p id="onBtn" style="display:block">ON</p>
-                          <p id="offBtn" style="display:none">OFF</p>
-                        </span>
-                  </label></td>
-            </tr>
-      </table>
-      </div>
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+		<div class="sCategoryTitle">
+			쉐이크
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}  " th:if="${list.catNo} == 'SHK'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">바닐라쉐이크</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">5500</td>
 
-      <div class="sCategoryTitle"> 마카롱 
-      <table>
-        <thead>
-            <tr>
-                <th id="thStyle" style="width:180px"> 메뉴  </th>
-                <th id="thStyle" style="width:100px;">  가격  </th>
-                <th id="thStyle">  사용여부  </th>
-            </tr>                
-        </thead>
-        <tbody class="menuList">
-          <tr th:each="list : ${menuList}" th:if="${list.catNo} == 'MCR'" id="trStyle">
-              <td th:text="${list.gdNm}" id="tdStyle"> 초코 마카롱 </td>
-              <td th:text=" ${list.price}+원" id="tdStyle"> 3500 </td>
-              
-              <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-                <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                      <span class="toggleButton">
-                        <p id="onBtn" style="display:block">ON</p>
-                        <p id="offBtn" style="display:none">OFF</p>
-                      </span>
-                </label></td>
-          </tr>
-    </table>
-    </div>
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+		<div class="sCategoryTitle">
+			스무디
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}  " th:if="${list.catNo} == 'SMT'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">망고스무디</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">5500</td>
 
-    <div class="sCategoryTitle"> 쿠키 
-    <table>
-      <thead>
-          <tr>
-              <th id="thStyle" style="width:180px"> 메뉴  </th>
-              <th id="thStyle" style="width:100px;">  가격  </th>
-              <th id="thStyle">  사용여부  </th>
-          </tr>                
-      </thead>
-      <tbody class="menuList">
-        <tr th:each="list : ${menuList}" th:if="${list.catNo} == 'COK'" id="trStyle">
-            <td th:text="${list.gdNm}" id="tdStyle"> 레이즌 오트밀 </td>
-            <td th:text=" ${list.price}+원" id="tdStyle"> 3500 </td>
-            
-            <td th:attr="data-value=${list.gdNo}" id="toggleStyle">
-              <label for="toggle" class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check">
-                    <span class="toggleButton">
-                      <p id="onBtn" style="display:block">ON</p>
-                      <p id="offBtn" style="display:none">OFF</p>
-                    </span>
-              </label></td>
-        </tr>
-  </table>
-  </div>
-    </div>
-    
-    
-  </section>
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+	</div>
+	<div class="categoryDesert">
+		<div class="bigCategoryTitle">디저트</div>
+		<div class="sCategoryTitle">
+			케이크
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}" th:if="${list.catNo} == 'CAK'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">고구마 케이크</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">35000</td>
 
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+		<div class="sCategoryTitle">
+			머핀
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}" th:if="${list.catNo} == 'MUF'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">초코 머핀</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">3500</td>
+
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+		<div class="sCategoryTitle">
+			마카롱
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}" th:if="${list.catNo} == 'MCR'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">초코 마카롱</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">3500</td>
+
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+		<div class="sCategoryTitle">
+			쿠키
+			<table>
+				<thead>
+					<tr>
+						<th id="thStyle" style="width: 180px">메뉴</th>
+						<th id="thStyle" style="width: 100px;">가격</th>
+						<th id="thStyle">사용여부</th>
+					</tr>
+				</thead>
+				<tbody class="menuList">
+					<tr th:each="list : ${menuList}" th:if="${list.catNo} == 'COK'" id="trStyle">
+						<td th:text="${list.gdNm}" id="tdStyle">레이즌 오트밀</td>
+						<td th:text=" ${list.price}+원" id="tdStyle">3500</td>
+
+						<td th:attr="data-value=${list.gdNo}" id="toggleStyle"><label for="toggle"
+							class="toggleSwitch" th:attr="data-value=${list.gdYn}" id="check"> <span
+								class="toggleButton">
+									<p id="onBtn" style="display: block">ON</p>
+									<p id="offBtn" style="display: none">OFF</p>
+							</span>
+						</label></td>
+					</tr>
+			</table>
+		</div>
+	</div>
+</section>
 </body>
-
 </html>

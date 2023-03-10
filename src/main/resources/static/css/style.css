@@ -452,8 +452,8 @@ body.dark .sidebar li a:hover .text {
     font-family: 'Poppins', sans-serif;
     color : #707070;
     width : 800px;
-    height : 200px;
-    padding: 15px;
+    height : 400px;
+    padding-left : 60px;
     box-sizing: border-box;
     text-align : left;
     margin-top : 20px;
